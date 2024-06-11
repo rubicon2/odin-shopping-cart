@@ -52,3 +52,8 @@ body {
 #root {
   isolation: isolate;
 }
+
+/* || General styles */
+#root {
+  font-family: 'Open Sans', sans-serif, serif;
+}
