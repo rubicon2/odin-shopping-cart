@@ -2,6 +2,7 @@ import Basket from './routes/basket';
 import Home from './routes/home';
 import Root from './routes/root';
 import Shop from './routes/shop';
+import Error from './routes/error';
 
 export const routes = [
   {
@@ -9,7 +10,7 @@ export const routes = [
     element: <Root />,
     children: [
       {
-        errorElement: <h1>An error has occurred.</h1>,
+        errorElement: <Error />,
         children: [
           {
             index: true,
