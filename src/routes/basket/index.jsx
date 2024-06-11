@@ -1,9 +1,10 @@
 import Container from '../../components/container';
+import PageHeading from '../../components/pageHeading';
 
 export default function Basket() {
   return (
     <Container as="main">
-      <h2>Basket</h2>
+      <PageHeading>Basket</PageHeading>
     </Container>
   );
 }

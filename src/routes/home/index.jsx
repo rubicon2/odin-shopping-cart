@@ -1,9 +1,10 @@
 import Container from '../../components/container';
+import PageHeading from '../../components/pageHeading';
 
 export default function Home() {
   return (
     <Container as="main">
-      <h2>Home</h2>
+      <PageHeading>Home</PageHeading>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum ea atque,
         at fugit vel obcaecati excepturi. Vel dignissimos natus tenetur!
