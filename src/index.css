@@ -56,5 +56,11 @@ body {
 
 /* || General styles */
 #root {
+  --color--dark: #252525;
+  --color--light: #646464;
+  --color--shadow: #6464643a;
+  --accent-color: #e00f0f;
+  --accent-color--dark: #9c0c0c;
+
   font-family: 'Open Sans', sans-serif, serif;
 }
