@@ -100,6 +100,13 @@ describe('User API', () => {
     expect(user).toEqual(data.user);
   });
 
+  it('returns null if no user data already created', async () => {
+    data = {};
+
+    const user = await getUser();
+    expect(user).toBe(null);
+  });
+
   it('adds item to basket', async () => {
     data = {
       user: {

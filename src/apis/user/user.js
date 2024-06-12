@@ -19,10 +19,12 @@ export async function createUser() {
   await set('user', user);
   return user;
 }
+
 export async function getUser() {
   const user = await get('user');
   // When createdAt date/time is stored to disk, it is stringified. Turn back into a Date
-  return { ...user, createdAt: new Date(user.createdAt) };
+  if (user) return { ...user, createdAt: new Date(user.createdAt) };
+  else return null;
 }
 
 export async function addToBasket(item) {
