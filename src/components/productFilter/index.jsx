@@ -1,6 +1,7 @@
 import PriceFilter from '../priceFilter';
 import { useState } from 'react';
 import styled from 'styled-components';
+import CategoryFilter from '../categoryFilter';
 
 const Container = styled.aside`
   width: 600px;
@@ -46,7 +47,7 @@ export default function ProductFilter({ products, onChange }) {
         (product) =>
           product.price >= newQuery.selectedMin &&
           product.price <= newQuery.selectedMax &&
-          newQuery.selectedCategories.includes(product.category) &&
+          newQuery.categoryStatus[product.category] &&
           product.rating.rate >= newQuery.selectedRating,
       )
       .map((product) => product.id);
@@ -54,7 +55,6 @@ export default function ProductFilter({ products, onChange }) {
     setQuery(newQuery);
   };
 
-  // category - range of tick boxes
   // rating.rate - range of tick boxes
   return (
     <Container>
@@ -63,6 +63,7 @@ export default function ProductFilter({ products, onChange }) {
         maxPrice={maxPrice}
         onChange={handleQueryChange}
       />
+      <CategoryFilter categories={categories} onChange={handleQueryChange} />
     </Container>
   );
 }
