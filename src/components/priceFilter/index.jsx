@@ -1,16 +1,7 @@
+import FilterContainer from '../filterContainer';
+import FilterTitle from '../filterTitle';
+import FilterLabel from '../filterLabel';
 import { useState } from 'react';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-const FilterLabel = styled.label`
-  display: flex;
-  justify-content: space-between;
-`;
 
 export default function PriceFilter({ minPrice, maxPrice, onChange }) {
   const [selectedMin, setSelectedMin] = useState(minPrice);
@@ -29,7 +20,8 @@ export default function PriceFilter({ minPrice, maxPrice, onChange }) {
   };
 
   return (
-    <Container>
+    <FilterContainer>
+      <FilterTitle>Price</FilterTitle>
       <FilterLabel>
         Min:
         <input
@@ -52,6 +44,6 @@ export default function PriceFilter({ minPrice, maxPrice, onChange }) {
           onChange={handleMaxChange}
         />
       </FilterLabel>
-    </Container>
+    </FilterContainer>
   );
 }
