@@ -36,6 +36,11 @@ select {
   font: inherit;
 }
 
+button,
+input[type='checkbox'] {
+  cursor: pointer;
+}
+
 p,
 h1,
 h2,
