@@ -2,6 +2,7 @@ import PriceFilter from '../priceFilter';
 import { useState } from 'react';
 import styled from 'styled-components';
 import CategoryFilter from '../categoryFilter';
+import RatingFilter from '../ratingFilter';
 
 const Container = styled.aside`
   width: 600px;
@@ -40,7 +41,7 @@ export default function ProductFilter({ products, onChange }) {
       (obj, category) => ({ ...obj, [category]: true }),
       {},
     ),
-    selectedRating: 0,
+    selectedRating: 4,
   });
 
   const handleQueryChange = (queryObj) => {
@@ -67,6 +68,11 @@ export default function ProductFilter({ products, onChange }) {
         onChange={handleQueryChange}
       />
       <CategoryFilter categories={categories} onChange={handleQueryChange} />
+      <RatingFilter
+        initialRating={4}
+        maxRating={5}
+        onChange={handleQueryChange}
+      />
     </Container>
   );
 }
