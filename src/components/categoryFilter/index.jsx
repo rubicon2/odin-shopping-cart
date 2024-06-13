@@ -1,15 +1,10 @@
+import FilterContainer from '../filterContainer';
+import FilterTitle from '../filterTitle';
+import FilterLabel from '../filterLabel';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-const FilterLabel = styled.label`
-  display: flex;
-  justify-content: space-between;
+const CategoryLabel = styled(FilterLabel)`
   text-transform: capitalize;
 `;
 
@@ -28,9 +23,10 @@ export default function CategoryFilter({ categories, onChange }) {
   };
 
   return (
-    <Container>
+    <FilterContainer>
+      <FilterTitle>Category</FilterTitle>
       {categories.map((category) => (
-        <FilterLabel key={category}>
+        <CategoryLabel key={category}>
           {category}
           <input
             type="checkbox"
@@ -39,8 +35,8 @@ export default function CategoryFilter({ categories, onChange }) {
             checked={categoryStatus[category]}
             onChange={handleSelectionChange}
           />
-        </FilterLabel>
+        </CategoryLabel>
       ))}
-    </Container>
+    </FilterContainer>
   );
 }
