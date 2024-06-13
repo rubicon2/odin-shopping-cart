@@ -36,7 +36,10 @@ export default function ProductFilter({ products, onChange }) {
   const [query, setQuery] = useState({
     selectedMin: minPrice,
     selectedMax: maxPrice,
-    selectedCategories: categories,
+    categoryStatus: categories.reduce(
+      (obj, category) => ({ ...obj, [category]: true }),
+      {},
+    ),
     selectedRating: 0,
   });
 
