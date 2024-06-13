@@ -1,5 +1,5 @@
 import PriceFilter from '../priceFilter';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import CategoryFilter from '../categoryFilter';
 import RatingFilter from '../ratingFilter';
@@ -58,6 +58,11 @@ export default function ProductFilter({ products, onChange }) {
     onChange(visibleProductIds);
     setQuery(newQuery);
   };
+
+  // Run query on first render... lame
+  useEffect(() => {
+    handleQueryChange(query);
+  }, []);
 
   // rating.rate - range of tick boxes
   return (
