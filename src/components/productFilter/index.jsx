@@ -29,7 +29,7 @@ function getCategories(products) {
   return Array.from(new Set(products.map((product) => product.category)));
 }
 
-export default function ProductFilter({ products, onChange }) {
+export default function ProductFilter({ className, products, onChange }) {
   const minPrice = getLowestPrice(products);
   const maxPrice = getHighestPrice(products);
   const categories = getCategories(products);
@@ -66,7 +66,7 @@ export default function ProductFilter({ products, onChange }) {
 
   // rating.rate - range of tick boxes
   return (
-    <Container>
+    <Container className={className}>
       <PriceFilter
         minPrice={minPrice}
         maxPrice={maxPrice}
