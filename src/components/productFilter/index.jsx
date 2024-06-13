@@ -5,11 +5,11 @@ import CategoryFilter from '../categoryFilter';
 import RatingFilter from '../ratingFilter';
 
 const Container = styled.aside`
-  width: 600px;
   border: 2px solid var(--color--light);
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 5px 5px 5px 5px var(--color--shadow);
+  /* Stop it stretching to fill up any parent container, e.g. grid */
   height: min-content;
 `;
 
