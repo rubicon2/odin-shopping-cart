@@ -1,4 +1,4 @@
-import { ContainerStyled } from '../container';
+import Container from '../container';
 import NavBar from '../navBar';
 import LogoDark from '/mega-shop-logo-dark.svg';
 import styled from 'styled-components';
@@ -7,7 +7,7 @@ const Background = styled.header`
   box-shadow: 0px 5px 20px 5px var(--color--shadow);
 `;
 
-const Content = styled(ContainerStyled)`
+const Content = styled(Container)`
   display: flex;
   justify-content: space-between;
   align-items: center;
