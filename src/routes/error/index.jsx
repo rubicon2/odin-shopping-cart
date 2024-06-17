@@ -6,6 +6,8 @@ import ErrorText from '../../components/errorText';
 export default function Error() {
   const error = useRouteError();
 
+  console.error(error);
+
   return (
     <Container>
       <PageHeading>An error has occurred:</PageHeading>
