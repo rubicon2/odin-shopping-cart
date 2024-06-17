@@ -1,3 +1,4 @@
+import ProductCard from '../productCard';
 import styled from 'styled-components';
 
 const Container = styled.main`
@@ -11,11 +12,7 @@ export default function ProductList({ products }) {
   return (
     <Container>
       {products.map((product) => (
-        <div key={product.id}>
-          <h3>{product.title}</h3>
-          <img src={product.image} alt="" />
-          <span>£{product.price.toFixed(2)}</span>
-        </div>
+        <ProductCard key={product.id} maxRating={5} product={product} />
       ))}
     </Container>
   );
