@@ -3,6 +3,7 @@ import PriceFilter from '../priceFilter';
 import CategoryFilter from '../categoryFilter';
 import RatingFilter from '../ratingFilter';
 import { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 function getLowestPrice(products) {
   return products
@@ -19,6 +20,10 @@ function getHighestPrice(products) {
 function getCategories(products) {
   return Array.from(new Set(products.map((product) => product.category)));
 }
+
+const FilterContainer = styled(ShopSectionContainer)`
+  height: min-content;
+`;
 
 export default function ProductFilter({ className, products, onChange }) {
   const minPrice = getLowestPrice(products);
@@ -56,7 +61,8 @@ export default function ProductFilter({ className, products, onChange }) {
   }, []);
 
   return (
-    <ShopSectionContainer className={className} as="aside">
+    // Using "as" breaks the inherited styles, but "forwardedAs" doesn't (???)
+    <FilterContainer className={className} forwardedAs="aside">
       <PriceFilter
         minPrice={minPrice}
         maxPrice={maxPrice}
@@ -68,6 +74,6 @@ export default function ProductFilter({ className, products, onChange }) {
         maxRating={5}
         onChange={handleQueryChange}
       />
-    </ShopSectionContainer>
+    </FilterContainer>
   );
 }
