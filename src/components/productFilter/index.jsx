@@ -1,17 +1,8 @@
+import ShopSectionContainer from '../shopSectionContainer';
 import PriceFilter from '../priceFilter';
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import CategoryFilter from '../categoryFilter';
 import RatingFilter from '../ratingFilter';
-
-const Container = styled.aside`
-  border: 2px solid var(--color--light);
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 5px 5px 5px 5px var(--color--shadow);
-  /* Stop it stretching to fill up any parent container, e.g. grid */
-  height: min-content;
-`;
+import { useState, useEffect } from 'react';
 
 function getLowestPrice(products) {
   return products
@@ -64,9 +55,8 @@ export default function ProductFilter({ className, products, onChange }) {
     handleQueryChange(query);
   }, []);
 
-  // rating.rate - range of tick boxes
   return (
-    <Container className={className}>
+    <ShopSectionContainer className={className} as="aside">
       <PriceFilter
         minPrice={minPrice}
         maxPrice={maxPrice}
@@ -78,6 +68,6 @@ export default function ProductFilter({ className, products, onChange }) {
         maxRating={5}
         onChange={handleQueryChange}
       />
-    </Container>
+    </ShopSectionContainer>
   );
 }
