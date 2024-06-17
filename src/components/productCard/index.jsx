@@ -17,7 +17,6 @@ const ProductImg = styled.img`
 const ProductInfo = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
 `;
 
 export default function ProductCard({ className, maxRating, product }) {

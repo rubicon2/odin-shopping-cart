@@ -5,10 +5,15 @@ const Container = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+
+  border-bottom: 2px solid var(--color--shadow);
 
   &:last-of-type {
     padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
   }
 `;
 

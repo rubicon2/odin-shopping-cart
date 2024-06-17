@@ -62,8 +62,8 @@ body {
 /* || General styles */
 #root {
   --color--dark: #252525;
-  --color--light: #646464;
-  --color--shadow: #6464643a;
+  --color--light: #a3a3a3;
+  --color--shadow: #64646413;
   --accent-color: #e00f0f;
   --accent-color--dark: #9c0c0c;
 

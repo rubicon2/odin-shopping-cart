@@ -1,5 +1,4 @@
 import Container from '../../components/container';
-import PageHeading from '../../components/pageHeading';
 import ProductFilter from '../../components/productFilter';
 import ProductList from '../../components/productList';
 import { getProducts } from '../../apis/products/products';
@@ -7,7 +6,7 @@ import { useLoaderData } from 'react-router';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const ShopContainer = styled.div`
+const ShopGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 2rem;
@@ -35,13 +34,12 @@ export default function Shop() {
   );
 
   return (
-    <Container as="main">
-      <PageHeading>Shop</PageHeading>
+    <Container forwardedAs="main">
       {productList && (
-        <ShopContainer>
+        <ShopGrid>
           <StickyFilter products={productList} onChange={setVisibleIds} />
           <ProductList products={visibleProducts} />
-        </ShopContainer>
+        </ShopGrid>
       )}
     </Container>
   );

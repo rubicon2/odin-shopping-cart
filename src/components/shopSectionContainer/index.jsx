@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  border: 2px solid var(--color--light);
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 5px 5px 5px 5px var(--color--shadow);
+  border: 1px solid var(--color--light);
+  border-radius: 5px;
+  padding: 1.5rem;
 `;
 
 export default function ShopSectionContainer({ className, children, as }) {
