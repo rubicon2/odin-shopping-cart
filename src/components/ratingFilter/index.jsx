@@ -12,6 +12,15 @@ const RatingContainer = styled.div`
 const RatingButton = styled.button`
   background-color: transparent;
   border: none;
+
+  &:hover,
+  &:focus-visible {
+    filter: brightness(0.8);
+  }
+
+  &:active {
+    filter: brightness(0.5);
+  }
 `;
 
 export default function RatingFilter({
