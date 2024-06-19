@@ -1,11 +1,23 @@
 import localforage from 'localforage';
 
-async function get(key) {
+let onChangeListeners = [];
+
+export function startListeningForUpdates(fn) {
+  if (!onChangeListeners.includes(fn)) onChangeListeners.push(fn);
+}
+
+export function stopListeningForUpdates(fnToRemove) {
+  onChangeListeners = onChangeListeners.filter((fn) => fn !== fnToRemove);
+}
+
+async function get(key, listener) {
   const item = await localforage.getItem(key);
+  if (listener) onChangeListeners.push(listener);
   return item;
 }
 
 function set(key, item) {
+  for (const listener of onChangeListeners) listener(item);
   return localforage.setItem(key, item);
 }
 
@@ -20,8 +32,8 @@ export async function createUser() {
   return user;
 }
 
-export async function getUser() {
-  let user = await get('user');
+export async function getUser(listener) {
+  let user = await get('user', listener);
   if (!user) user = await createUser();
   // When createdAt date/time is stored to disk, it is stringified. Turn back into a Date
   return { ...user, createdAt: new Date(user.createdAt) };

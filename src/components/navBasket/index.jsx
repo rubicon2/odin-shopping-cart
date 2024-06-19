@@ -1,6 +1,7 @@
 import BasketIcon from '/basket.svg';
 import BasketIconRed from '/basket-red.svg';
-import { useLocation, Link, useLoaderData } from 'react-router-dom';
+import useUser from '../../hooks/useUser';
+import { useLocation, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 // Preload icon so there is no delay when user clicks link to /basket
@@ -37,11 +38,16 @@ const ItemCount = styled.div`
 `;
 
 export default function NavBasket() {
-  const user = useLoaderData();
-  const basketItemCount = user.basket.length;
+  // useLoaderData only runs when the component is mounted
+  // since navBar is on screen on all pages, it will not re-render when the basket changes
+  // seems like a good place to use useEffect - synchronize with the external user/localforage API
+  const user = useUser();
+
+  const basketItemCount = user ? user.basket.length : 0;
 
   const location = useLocation();
   const isActive = location.pathname === '/basket';
+
   return (
     <BasketLink to="/basket">
       <ImgContainer>
