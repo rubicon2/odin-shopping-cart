@@ -29,8 +29,14 @@ const ItemCount = styled.div`
   background-color: var(--color--dark);
   color: white;
   font-weight: 500;
-  top: 50px;
-  left: 25px;
+  /* For some reason using top and left to position, leaves the count in the wrong position when the styled component is mounted? */
+  /* Commenting out position: absolute, saving, then uncommenting it and saving also fixes it. I am very confused. */
+  /* top: 50px; */
+  /* left: 25px; */
+
+  /* However this seems to work fine */
+  margin-top: -20px;
+  margin-left: 25px;
 
   &.active {
     background-color: var(--accent-color);
