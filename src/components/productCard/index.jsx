@@ -8,7 +8,6 @@ import styled from 'styled-components';
 
 const RatingContainer = styled.div`
   display: flex;
-  align-items: center;
 `;
 
 const ProductImg = styled.img`
@@ -23,11 +22,31 @@ const ProductInfo = styled.div`
   justify-content: space-between;
 `;
 
+const BuySection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
 const BuyButton = styled.button`
-  margin-top: auto;
-  margin-left: auto;
-  display: block;
-  background-color: pink;
+  background-color: white;
+  border: 1px solid var(--color--light);
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 60px;
+
+  display: grid;
+  place-items: center;
+
+  &:hover,
+  &:focus-visible {
+    filter: brightness(0.9);
+  }
+
+  &:active {
+    filter: brightness(0.5);
+  }
 `;
 
 const handleBuy = async (product) => {
@@ -53,7 +72,7 @@ export default function ProductCard({ className, maxRating, product }) {
             ))}
           </RatingContainer>
         </div>
-        <div>
+        <BuySection>
           <div>£{product.price.toFixed(2)}</div>
           <BuyButton onClick={() => handleBuy(product.id)}>
             <img
@@ -61,7 +80,7 @@ export default function ProductCard({ className, maxRating, product }) {
               alt={`buy ${product.title} for £${product.price}`}
             />
           </BuyButton>
-        </div>
+        </BuySection>
       </ProductInfo>
     </ShopSectionContainer>
   );
