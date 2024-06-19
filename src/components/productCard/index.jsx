@@ -55,7 +55,7 @@ export default function ProductCard({ className, maxRating, product }) {
         </div>
         <div>
           <div>£{product.price.toFixed(2)}</div>
-          <BuyButton onClick={() => handleBuy(product)}>
+          <BuyButton onClick={() => handleBuy(product.id)}>
             <img
               src={BuyIcon}
               alt={`buy ${product.title} for £${product.price}`}
