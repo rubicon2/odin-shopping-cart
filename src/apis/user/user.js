@@ -2,6 +2,10 @@ import localforage from 'localforage';
 
 let onChangeListeners = [];
 
+// start/stopListeningForUpdates functions are for letting components update when the data is changed.
+// Feels like there should be some built in behavior/hooks for this sort of thing, and that I am definitely approaching this in the wrong way.
+// useEffect with something in the dependency array felt like the way to go, but what was supposed to go in the dependency array?
+// user should be reloaded if the basket changes, but you would have to reload the user to know whether the basket has changed in the first place.
 export function startListeningForUpdates(fn) {
   if (!onChangeListeners.includes(fn)) onChangeListeners.push(fn);
 }
