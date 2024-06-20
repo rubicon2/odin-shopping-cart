@@ -51,11 +51,11 @@ export async function addToBasket(item) {
   });
 }
 
-export async function removeFromBasket(item) {
+export async function removeFromBasket(itemToRemove) {
   const user = await getUser();
   await set('user', {
     ...user,
-    basket: user.basket.filter((i) => i !== item),
+    basket: user.basket.filter((item) => item !== itemToRemove),
   });
 }
 
