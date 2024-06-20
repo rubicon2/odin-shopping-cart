@@ -46,8 +46,14 @@ export default function Basket() {
     ? products.filter((product) => user.basket.includes(product.id))
     : [];
 
-  const basketValue = productsInBasket.reduce(
-    (total, current) => total + current.price,
+  // Map productsInBasket into array of objects with format { product, quantity }
+  const basketInfo = productsInBasket.map((product) => ({
+    product,
+    quantity: user.basket.filter((itemId) => itemId === product.id).length,
+  }));
+
+  const basketValue = basketInfo.reduce(
+    (total, current) => total + current.product.price * current.quantity,
     0,
   );
 
@@ -55,7 +61,7 @@ export default function Basket() {
     <Container as="main">
       <PageHeading>Basket</PageHeading>
       <ClearBasketButton onClick={() => clearBasket()}>Clear</ClearBasketButton>
-      {productsInBasket.map((product) => BasketItem(product))}
+      {basketInfo.map((item) => BasketItem(item))}
       <TotalValue>Total: £{basketValue.toFixed(2)}</TotalValue>
       <CheckoutButton>Checkout</CheckoutButton>
     </Container>
