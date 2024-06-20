@@ -1,4 +1,4 @@
-import Basket from './routes/basket';
+import Basket, { loader as BasketLoader } from './routes/basket';
 import Shop, { loader as ShopLoader } from './routes/shop';
 import Home from './routes/home';
 import Root from './routes/root';
@@ -23,6 +23,7 @@ export const routes = [
           },
           {
             path: '/basket',
+            loader: BasketLoader,
             element: <Basket />,
           },
         ],
