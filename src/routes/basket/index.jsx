@@ -1,12 +1,45 @@
 import Container from '../../components/container';
-import PageHeading from '../../components/pageHeading';
 import BasketItem from '../../components/basketItem';
+import ShopSectionContainer from '../../components/shopSectionContainer';
 import { getProducts } from '../../apis/products/products';
 import { clearBasket } from '../../apis/user/user';
 import useUser from '../../hooks/useUser';
 
 import { useLoaderData } from 'react-router';
 import styled from 'styled-components';
+
+const Content = styled.div`
+  display: flex;
+  gap: 2rem;
+`;
+
+const ContainerHeading = styled.h2`
+  font-weight: 500;
+  padding-bottom: 1em;
+`;
+
+const DetailsContainer = styled(ShopSectionContainer)`
+  flex: 1;
+`;
+
+const SummaryContainer = styled(ShopSectionContainer)`
+  flex: 0.3;
+  height: min-content;
+  position: sticky;
+  top: 1rem;
+`;
+
+const SummaryContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const BasketItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
 
 const ClearBasketButton = styled.button``;
 
@@ -59,11 +92,26 @@ export default function Basket() {
 
   return (
     <Container as="main">
-      <PageHeading>Basket</PageHeading>
-      <ClearBasketButton onClick={() => clearBasket()}>Clear</ClearBasketButton>
-      {basketInfo.map((item) => BasketItem(item))}
-      <TotalValue>Total: £{basketValue.toFixed(2)}</TotalValue>
-      <CheckoutButton>Checkout</CheckoutButton>
+      <Content>
+        <DetailsContainer>
+          <ContainerHeading>My Basket</ContainerHeading>
+          <BasketItemsContainer>
+            {basketInfo.map((item) => (
+              <BasketItem key={item.product.id} item={item} />
+            ))}
+          </BasketItemsContainer>
+          <ClearBasketButton onClick={() => clearBasket()}>
+            Clear Basket
+          </ClearBasketButton>
+        </DetailsContainer>
+        <SummaryContainer>
+          <ContainerHeading>Summary</ContainerHeading>
+          <SummaryContent>
+            <TotalValue>Total: £{basketValue.toFixed(2)}</TotalValue>
+            <CheckoutButton>Checkout</CheckoutButton>
+          </SummaryContent>
+        </SummaryContainer>
+      </Content>
     </Container>
   );
 }
