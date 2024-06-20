@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const StyledHeading = styled.h1`
-  font-size: 4rem;
+const StyledHeading = styled.h2`
+  font-size: 2.5rem;
   font-weight: 300;
 `;
 
