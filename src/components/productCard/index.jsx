@@ -8,6 +8,11 @@ import { addToBasket } from '../../apis/user/user';
 import styled from 'styled-components';
 import { useState } from 'react';
 
+const ProductContainer = styled(ShopSectionContainer)`
+  display: flex;
+  flex-direction: column;
+`;
+
 const RatingContainer = styled.div`
   display: flex;
 `;
@@ -20,8 +25,15 @@ const ProductImg = styled.img`
 `;
 
 const ProductInfo = styled.div`
-  display: grid;
-  grid-template-columns: 2.5fr 1fr;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: 970px) {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+  }
 `;
 
 const BuySection = styled.div`
@@ -60,7 +72,7 @@ export default function ProductCard({ className, maxRating, product }) {
   for (let i = 1; i <= maxRating; i++) ratings.push(i);
 
   return (
-    <ShopSectionContainer className={className}>
+    <ProductContainer className={className}>
       <ProductImg src={product.image} alt={product.title} />
       <ProductInfo>
         <div>
@@ -94,6 +106,6 @@ export default function ProductCard({ className, maxRating, product }) {
           </BuyButton>
         </BuySection>
       </ProductInfo>
-    </ShopSectionContainer>
+    </ProductContainer>
   );
 }
