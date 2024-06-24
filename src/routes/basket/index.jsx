@@ -90,9 +90,9 @@ export default function Basket() {
   );
 
   return (
-    <Container as="main">
+    <Container>
       <Content>
-        <DetailsContainer>
+        <DetailsContainer forwardedAs="aside">
           <ContainerHeading>My Basket</ContainerHeading>
           <BasketItemsContainer>
             {productsInBasket.map((product) => (
@@ -107,7 +107,7 @@ export default function Basket() {
             Clear Basket
           </ClearBasketButton>
         </DetailsContainer>
-        <SummaryContainer>
+        <SummaryContainer forwardedAs="main">
           <ContainerHeading>Summary</ContainerHeading>
           <SummaryContent>
             <Row>
