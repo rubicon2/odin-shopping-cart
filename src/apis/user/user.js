@@ -43,7 +43,20 @@ export async function getUser(listener) {
   return { ...user, createdAt: new Date(user.createdAt) };
 }
 
+// This is additive, e.g. if you add the same item with qty 1 two times, you'll end up with qty 2 for that item
 export async function addToBasket(item, qty = 1) {
+  const user = await getUser();
+  await set('user', {
+    ...user,
+    basket: {
+      ...user.basket,
+      [item.id]: (user.basket[item.id] ?? 0) + qty,
+    },
+  });
+}
+
+// Whereas this just overwrites the value.
+export async function setQuantity(item, qty = 1) {
   const user = await getUser();
   await set('user', {
     ...user,

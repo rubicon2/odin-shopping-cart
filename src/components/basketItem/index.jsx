@@ -1,5 +1,9 @@
 import Button from '../button';
-import { addToBasket, removeFromBasket } from '../../apis/user/user';
+import {
+  addToBasket,
+  removeFromBasket,
+  setQuantity,
+} from '../../apis/user/user';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -37,7 +41,8 @@ const TotalValue = styled.span`
 `;
 
 export default function BasketItem({ product, qty }) {
-  const handleQtyChange = (product, qty) => addToBasket(product, qty);
+  const handleQtyChange = async (product, qty) =>
+    await setQuantity(product, qty);
   // If this check is done in handleQtyChange, the item disappears as soon as you hit zero.
   // Doesn't feel good and user might enter zero by mistake, so this separate function will be called onBlur/on focus out.
   // Will give user a chance to correct any input errors.
