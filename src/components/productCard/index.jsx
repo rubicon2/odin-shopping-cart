@@ -18,7 +18,8 @@ const RatingContainer = styled.div`
 `;
 
 const ProductImg = styled.img`
-  height: 25vw;
+  /* Using height and not max-height so all images are the same size */
+  height: 350px;
   /* Preserve the aspect ratio */
   object-fit: contain;
   margin: 0 auto;
