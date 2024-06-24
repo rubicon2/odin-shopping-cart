@@ -1,6 +1,7 @@
 import Container from '../../components/container';
 import BasketItem from '../../components/basketItem';
 import ShopSectionContainer from '../../components/shopSectionContainer';
+import Button from '../../components/button';
 import { getProducts } from '../../apis/products/products';
 import { clearBasket } from '../../apis/user/user';
 import useUser from '../../hooks/useUser';
@@ -41,15 +42,15 @@ const BasketItemsContainer = styled.div`
   gap: 2rem;
 `;
 
-const ClearBasketButton = styled.button``;
+const ClearBasketButton = styled(Button)`
+  margin-top: 1em;
+`;
 
-const CheckoutButton = styled.button`
+const CheckoutButton = styled(Button)`
   background-color: var(--accent-color);
   color: white;
-  font-weight: 600;
   padding: 0.75em 1.5em;
   border: none;
-  border-radius: 5px;
 
   &:hover,
   &:focus-visible {

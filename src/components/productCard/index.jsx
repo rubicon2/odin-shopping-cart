@@ -1,6 +1,7 @@
 import BuyIcon from '/buy.svg';
 
 import ShopSectionContainer from '../shopSectionContainer';
+import Button from '../button';
 import RatingStar from '../ratingStar';
 import { addToBasket } from '../../apis/user/user';
 
@@ -29,24 +30,13 @@ const BuySection = styled.div`
   gap: 0.5rem;
 `;
 
-const BuyButton = styled.button`
-  background-color: white;
+const BuyButton = styled(Button)`
   border: 1px solid var(--color--light);
   padding: 0.5rem;
-  border-radius: 5px;
   width: 60px;
 
   display: grid;
   place-items: center;
-
-  &:hover,
-  &:focus-visible {
-    filter: brightness(0.9);
-  }
-
-  &:active {
-    filter: brightness(0.5);
-  }
 `;
 
 const handleBuy = async (product) => {
