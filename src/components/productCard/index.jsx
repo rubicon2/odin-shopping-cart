@@ -40,7 +40,6 @@ const BuyButton = styled(Button)`
 `;
 
 const handleBuy = async (product) => {
-  console.log('Adding: ', product);
   await addToBasket(product);
 };
 
