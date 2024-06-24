@@ -40,6 +40,7 @@ const BuyButton = styled(Button)`
 `;
 
 const handleBuy = async (product) => {
+  console.log('Adding: ', product);
   await addToBasket(product);
 };
 
@@ -64,7 +65,7 @@ export default function ProductCard({ className, maxRating, product }) {
         </div>
         <BuySection>
           <div>£{product.price.toFixed(2)}</div>
-          <BuyButton onClick={() => handleBuy(product.id)}>
+          <BuyButton onClick={() => handleBuy(product)}>
             <img
               src={BuyIcon}
               alt={`buy ${product.title} for £${product.price}`}

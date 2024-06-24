@@ -77,17 +77,20 @@ export default function Basket() {
   const user = useUser();
 
   const productsInBasket = user
-    ? products.filter((product) => user.basket.includes(product.id))
+    ? products.filter((product) => user.basket[product.id] !== undefined)
     : [];
 
-  // Map productsInBasket into array of objects with format { product, quantity }
-  const basketInfo = productsInBasket.map((product) => ({
-    product,
-    quantity: user.basket.filter((itemId) => itemId === product.id).length,
-  }));
+  console.log('Products to display: ', productsInBasket);
+  if (user) console.log('User basket: ', user.basket);
 
-  const basketValue = basketInfo.reduce(
-    (total, current) => total + current.product.price * current.quantity,
+  // Map productsInBasket into array of objects with format { product, quantity }
+  // const basketInfo = productsInBasket.map((product) => ({
+  //   product,
+  //   quantity: user.basket.filter((itemId) => itemId === product.id).length,
+  // }));
+
+  const basketValue = productsInBasket.reduce(
+    (total, product) => total + product.price * user.basket[product.id],
     0,
   );
 
@@ -97,8 +100,12 @@ export default function Basket() {
         <DetailsContainer>
           <ContainerHeading>My Basket</ContainerHeading>
           <BasketItemsContainer>
-            {basketInfo.map((item) => (
-              <BasketItem key={item.product.id} item={item} />
+            {productsInBasket.map((product) => (
+              <BasketItem
+                key={product.id}
+                product={product}
+                qty={user.basket[product.id]}
+              />
             ))}
           </BasketItemsContainer>
           <ClearBasketButton onClick={() => clearBasket()}>

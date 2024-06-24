@@ -30,7 +30,7 @@ export async function createUser() {
   const user = {
     id: Math.random().toString(36).substring(2, 9),
     createdAt: new Date(Date.now()),
-    basket: [],
+    basket: {},
   };
   await set('user', user);
   return user;
@@ -43,19 +43,25 @@ export async function getUser(listener) {
   return { ...user, createdAt: new Date(user.createdAt) };
 }
 
-export async function addToBasket(item) {
+export async function addToBasket(item, qty = 1) {
   const user = await getUser();
   await set('user', {
     ...user,
-    basket: [...user.basket, item],
+    basket: {
+      ...user.basket,
+      [item.id]: qty,
+    },
   });
 }
 
 export async function removeFromBasket(itemToRemove) {
   const user = await getUser();
+  const newBasket = { ...user.basket };
+  delete newBasket[itemToRemove.id];
+
   await set('user', {
     ...user,
-    basket: user.basket.filter((item) => item !== itemToRemove),
+    basket: newBasket,
   });
 }
 
@@ -63,6 +69,6 @@ export async function clearBasket() {
   const user = await getUser();
   await set('user', {
     ...user,
-    basket: [],
+    basket: {},
   });
 }

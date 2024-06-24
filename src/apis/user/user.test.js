@@ -33,7 +33,7 @@ afterAll(() => {
 
 const product1 = {
   id: 0,
-  title: 0,
+  title: 'Product 1',
   price: 0,
   description: 0,
   category: 0,
@@ -46,7 +46,7 @@ const product1 = {
 
 const product2 = {
   id: 1,
-  title: 0,
+  title: 'Product 2',
   price: 0,
   description: 0,
   category: 0,
@@ -78,7 +78,7 @@ describe('User API', () => {
 
     it('basket is an array', async () => {
       const user = await createUser();
-      expect(Array.isArray(user.basket)).toBe(true);
+      expect(typeof user.basket).toBe('object');
     });
   });
 
@@ -92,7 +92,7 @@ describe('User API', () => {
       user: {
         id: 0,
         createdAt: new Date(Date.now()),
-        basket: [],
+        basket: {},
       },
     };
 
@@ -112,16 +112,16 @@ describe('User API', () => {
       user: {
         id: 0,
         createdAt: new Date(Date.now()),
-        basket: [],
+        basket: {},
       },
     };
 
     await addToBasket(product1);
-    await addToBasket(product2);
+    await addToBasket(product2, 4);
     const basket = data.user.basket;
-    expect(basket.length).toBe(2);
-    expect(basket[0]).toBe(product1);
-    expect(basket[1]).toBe(product2);
+    expect(Object.keys(basket).length).toBe(2);
+    expect(basket[product1.id]).toBe(1);
+    expect(basket[product2.id]).toBe(4);
   });
 
   it('removes item from basket', async () => {
@@ -129,17 +129,17 @@ describe('User API', () => {
       user: {
         id: 0,
         createdAt: new Date(Date.now()),
-        basket: [product1, product2],
+        basket: { [product1.id]: 1, [product2.id]: 4 },
       },
     };
 
     await removeFromBasket(product1);
     const basket = data.user.basket;
-    expect(basket.length).toBe(1);
-    expect(basket[0]).toBe(product2);
+    expect(Object.keys(basket).length).toBe(1);
+    expect(basket[product2.id]).toBe(4);
 
     await removeFromBasket(product2);
-    expect(data.user.basket.length).toBe(0);
+    expect(Object.keys(data.user.basket).length).toBe(0);
   });
 
   it("clearBasket removes all items from user's basket", async () => {
@@ -147,11 +147,11 @@ describe('User API', () => {
       user: {
         id: 0,
         createdAt: new Date(Date.now()),
-        basket: [product1, product2],
+        basket: { [product1.id]: 1, [product2.id]: 4 },
       },
     };
 
     await clearBasket();
-    expect(data.user.basket.length).toBe(0);
+    expect(Object.keys(data.user.basket).length).toBe(0);
   });
 });

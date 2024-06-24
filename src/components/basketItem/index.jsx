@@ -25,11 +25,8 @@ const ProductSummary = styled.div`
   gap: 0.5rem;
 `;
 
-export default function BasketItem({ item }) {
-  const { product, quantity } = item;
-
-  const handleRemove = (event) =>
-    removeFromBasket(parseInt(event.currentTarget.value));
+export default function BasketItem({ product, qty }) {
+  const handleRemove = (product) => removeFromBasket(product);
 
   return (
     <Container>
@@ -37,13 +34,13 @@ export default function BasketItem({ item }) {
       <ProductInfo>
         <h2>{product.title}</h2>
         <div>Price: £{product.price.toFixed(2)}</div>
-        <Button value={product.id} onClick={handleRemove}>
+        <Button value={product.id} onClick={() => handleRemove(product)}>
           Remove
         </Button>
       </ProductInfo>
       <ProductSummary>
-        <div>Qty: {quantity}</div>
-        <div>Total: £{(product.price * quantity).toFixed(2)}</div>
+        <div>Qty: {qty}</div>
+        <div>Total: £{(product.price * qty).toFixed(2)}</div>
       </ProductSummary>
     </Container>
   );
