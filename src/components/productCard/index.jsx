@@ -44,6 +44,7 @@ const handleBuy = async (product) => {
 };
 
 export default function ProductCard({ className, maxRating, product }) {
+  const priceString = '£' + product.price.toFixed(2);
   const ratings = [];
   for (let i = 1; i <= maxRating; i++) ratings.push(i);
 
@@ -63,11 +64,12 @@ export default function ProductCard({ className, maxRating, product }) {
           </RatingContainer>
         </div>
         <BuySection>
-          <div>£{product.price.toFixed(2)}</div>
           <BuyButton onClick={() => handleBuy(product)}>
+          <div>{priceString}</div>
             <img
               src={BuyIcon}
-              alt={`buy ${product.title} for £${product.price}`}
+              title={`Buy ${product.title} for ${priceString}`}
+              alt={`Buy ${product.title} for ${priceString}`}
             />
           </BuyButton>
         </BuySection>
