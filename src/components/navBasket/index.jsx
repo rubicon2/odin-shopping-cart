@@ -49,7 +49,12 @@ export default function NavBasket() {
   // seems like a good place to use useEffect - synchronize with the external user/localforage API
   const user = useUser();
 
-  const basketItemCount = user ? user.basket.length : 0;
+  const basketItemCount = user
+    ? Object.keys(user.basket).reduce(
+        (total, key) => total + user.basket[key],
+        0,
+      )
+    : 0;
 
   const location = useLocation();
   const isActive = location.pathname === '/basket';

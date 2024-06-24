@@ -47,7 +47,7 @@ export default function BasketItem({ product, qty }) {
             min="1"
             value={qty}
             onChange={(event) =>
-              handleQtyChange(product, event.currentTarget.value)
+              handleQtyChange(product, parseInt(event.currentTarget.value))
             }
           />
         </label>
