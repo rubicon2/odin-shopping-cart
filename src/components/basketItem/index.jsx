@@ -12,6 +12,16 @@ const Image = styled.img`
 
 const ProductInfo = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: start;
+`;
+
+const ProductSummary = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 
 export default function BasketItem({ item }) {
@@ -24,10 +34,10 @@ export default function BasketItem({ item }) {
         <h2>{product.title}</h2>
         <div>Price: £{product.price.toFixed(2)}</div>
       </ProductInfo>
-      <div>
+      <ProductSummary>
         <div>Qty: {quantity}</div>
         <div>Total: £{(product.price * quantity).toFixed(2)}</div>
-      </div>
+      </ProductSummary>
     </Container>
   );
 }
