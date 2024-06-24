@@ -6,6 +6,7 @@ import RatingStar from '../ratingStar';
 import { addToBasket } from '../../apis/user/user';
 
 import styled from 'styled-components';
+import { useState } from 'react';
 
 const RatingContainer = styled.div`
   display: flex;
@@ -39,11 +40,21 @@ const BuyButton = styled(Button)`
   place-items: center;
 `;
 
-const handleBuy = async (product) => {
-  await addToBasket(product);
+const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  * {
+    width: 50%;
+  }
+`;
+
+const handleBuy = async (product, qty) => {
+  await addToBasket(product, qty);
 };
 
 export default function ProductCard({ className, maxRating, product }) {
+  const [qty, setQty] = useState(1);
   const priceString = '£' + product.price.toFixed(2);
   const ratings = [];
   for (let i = 1; i <= maxRating; i++) ratings.push(i);
@@ -64,8 +75,17 @@ export default function ProductCard({ className, maxRating, product }) {
           </RatingContainer>
         </div>
         <BuySection>
-          <BuyButton onClick={() => handleBuy(product)}>
           <div>{priceString}</div>
+          <Row>
+            <label htmlFor={`${product.id}-qty`}>Qty:</label>
+            <input
+              type="number"
+              id={`${product.id}-qty`}
+              value={qty}
+              onChange={(event) => setQty(parseInt(event.currentTarget.value))}
+            />
+          </Row>
+          <BuyButton onClick={() => handleBuy(product, qty)}>
             <img
               src={BuyIcon}
               title={`Buy ${product.title} for ${priceString}`}
