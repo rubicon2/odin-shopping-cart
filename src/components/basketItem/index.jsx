@@ -1,5 +1,5 @@
 import Button from '../button';
-import { removeFromBasket } from '../../apis/user/user';
+import { addToBasket, removeFromBasket } from '../../apis/user/user';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -26,6 +26,7 @@ const ProductSummary = styled.div`
 `;
 
 export default function BasketItem({ product, qty }) {
+  const handleQtyChange = (product, qty) => addToBasket(product, qty);
   const handleRemove = (product) => removeFromBasket(product);
 
   return (
@@ -39,7 +40,17 @@ export default function BasketItem({ product, qty }) {
         </Button>
       </ProductInfo>
       <ProductSummary>
-        <div>Qty: {qty}</div>
+        <label>
+          Qty:
+          <input
+            type="number"
+            min="1"
+            value={qty}
+            onChange={(event) =>
+              handleQtyChange(product, event.currentTarget.value)
+            }
+          />
+        </label>
         <div>Total: £{(product.price * qty).toFixed(2)}</div>
       </ProductSummary>
     </Container>

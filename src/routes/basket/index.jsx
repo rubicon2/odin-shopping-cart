@@ -80,15 +80,7 @@ export default function Basket() {
     ? products.filter((product) => user.basket[product.id] !== undefined)
     : [];
 
-  console.log('Products to display: ', productsInBasket);
-  if (user) console.log('User basket: ', user.basket);
-
-  // Map productsInBasket into array of objects with format { product, quantity }
-  // const basketInfo = productsInBasket.map((product) => ({
-  //   product,
-  //   quantity: user.basket.filter((itemId) => itemId === product.id).length,
-  // }));
-
+  // user.basket is an object with keys that map the product id to a quantity
   const basketValue = productsInBasket.reduce(
     (total, product) => total + product.price * user.basket[product.id],
     0,
