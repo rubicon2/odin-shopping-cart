@@ -34,6 +34,8 @@ const SummaryContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  font-weight: 900;
 `;
 
 const BasketItemsContainer = styled.div`
@@ -62,8 +64,9 @@ const CheckoutButton = styled(Button)`
   }
 `;
 
-const TotalValue = styled.span`
-  font-weight: 900;
+const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export async function loader() {
@@ -107,7 +110,10 @@ export default function Basket() {
         <SummaryContainer>
           <ContainerHeading>Summary</ContainerHeading>
           <SummaryContent>
-            <TotalValue>Total: £{basketValue.toFixed(2)}</TotalValue>
+            <Row>
+              Total:
+              <div>£{basketValue.toFixed(2)}</div>
+            </Row>
             <CheckoutButton>Checkout</CheckoutButton>
           </SummaryContent>
         </SummaryContainer>
