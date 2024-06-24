@@ -3,12 +3,9 @@ import { addToBasket, removeFromBasket } from '../../apis/user/user';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1.5fr;
   gap: 2rem;
-`;
-
-const Image = styled.img`
-  max-width: 200px;
 `;
 
 const ProductInfo = styled.div`
@@ -28,7 +25,6 @@ const ProductSummary = styled.div`
 const SummaryRow = styled.label`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
 
   & > * {
@@ -46,7 +42,7 @@ export default function BasketItem({ product, qty }) {
 
   return (
     <Container>
-      <Image src={product.image} />
+      <img src={product.image} />
       <ProductInfo>
         <h2>{product.title}</h2>
         <div>Price: £{product.price.toFixed(2)}</div>
