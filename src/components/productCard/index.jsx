@@ -13,7 +13,7 @@ const RatingContainer = styled.div`
 `;
 
 const ProductImg = styled.img`
-  height: 350px;
+  height: 25vw;
   /* Preserve the aspect ratio */
   object-fit: contain;
   margin: 0 auto;
