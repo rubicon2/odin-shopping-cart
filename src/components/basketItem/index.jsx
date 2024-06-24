@@ -1,3 +1,4 @@
+import Button from '../button';
 import { removeFromBasket } from '../../apis/user/user';
 import styled from 'styled-components';
 
@@ -27,12 +28,18 @@ const ProductSummary = styled.div`
 export default function BasketItem({ item }) {
   const { product, quantity } = item;
 
+  const handleRemove = (event) =>
+    removeFromBasket(parseInt(event.currentTarget.value));
+
   return (
     <Container>
       <Image src={product.image} />
       <ProductInfo>
         <h2>{product.title}</h2>
         <div>Price: £{product.price.toFixed(2)}</div>
+        <Button value={product.id} onClick={handleRemove}>
+          Remove
+        </Button>
       </ProductInfo>
       <ProductSummary>
         <div>Qty: {quantity}</div>
