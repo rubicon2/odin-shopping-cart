@@ -103,9 +103,13 @@ export default function Basket() {
               />
             ))}
           </BasketItemsContainer>
-          <ClearBasketButton onClick={() => clearBasket()}>
-            Clear Basket
-          </ClearBasketButton>
+          {productsInBasket.length !== 0 ? (
+            <ClearBasketButton onClick={() => clearBasket()}>
+              Clear Basket
+            </ClearBasketButton>
+          ) : (
+            'Nothing in basket!'
+          )}
         </DetailsContainer>
         <SummaryContainer forwardedAs="main">
           <ContainerHeading>Summary</ContainerHeading>
