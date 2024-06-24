@@ -12,7 +12,7 @@ const Image = styled.img`
 `;
 
 const ProductInfo = styled.div`
-  flex: 1;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -23,6 +23,21 @@ const ProductSummary = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+`;
+
+const SummaryRow = styled.label`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  & > * {
+    width: 50%;
+  }
+`;
+
+const TotalValue = styled.span`
+  text-align: right;
 `;
 
 export default function BasketItem({ product, qty }) {
@@ -40,9 +55,10 @@ export default function BasketItem({ product, qty }) {
         </Button>
       </ProductInfo>
       <ProductSummary>
-        <label>
-          Qty:
+        <SummaryRow>
+          <label htmlFor={`${product.id}-qty`}>Qty:</label>
           <input
+            id={`${product.id}-qty`}
             type="number"
             min="1"
             value={qty}
@@ -50,8 +66,11 @@ export default function BasketItem({ product, qty }) {
               handleQtyChange(product, parseInt(event.currentTarget.value))
             }
           />
-        </label>
-        <div>Total: £{(product.price * qty).toFixed(2)}</div>
+        </SummaryRow>
+        <SummaryRow>
+          <span>Total:</span>
+          <TotalValue>£{(product.price * qty).toFixed(2)}</TotalValue>
+        </SummaryRow>
       </ProductSummary>
     </Container>
   );
