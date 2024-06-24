@@ -1,9 +1,5 @@
 import Button from '../button';
-import {
-  addToBasket,
-  removeFromBasket,
-  setQuantity,
-} from '../../apis/user/user';
+import { removeFromBasket, setQuantity } from '../../apis/user/user';
 import styled from 'styled-components';
 
 const Container = styled.div`
