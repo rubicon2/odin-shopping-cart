@@ -46,10 +46,10 @@ export default function BasketItem({ product, qty }) {
   // If this check is done in handleQtyChange, the item disappears as soon as you hit zero.
   // Doesn't feel good and user might enter zero by mistake, so this separate function will be called onBlur/on focus out.
   // Will give user a chance to correct any input errors.
-  const checkQtyNotZero = (product, qty) => {
-    if (qty <= 0) removeFromBasket(product);
+  const checkQtyNotZero = async (product, qty) => {
+    if (qty <= 0) await removeFromBasket(product);
   };
-  const handleRemove = (product) => removeFromBasket(product);
+  const handleRemove = async (product) => await removeFromBasket(product);
 
   return (
     <Container>
