@@ -20,14 +20,14 @@ const ProductImg = styled.img`
 `;
 
 const ProductInfo = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
 `;
 
 const BuySection = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   gap: 0.5rem;
 `;
 
