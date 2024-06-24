@@ -61,7 +61,7 @@ export default function ProductCard({ className, maxRating, product }) {
 
   return (
     <ShopSectionContainer className={className}>
-      <ProductImg src={product.image} alt="" />
+      <ProductImg src={product.image} alt={product.title} />
       <ProductInfo>
         <div>
           <h3>{product.title}</h3>
