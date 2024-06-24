@@ -38,6 +38,12 @@ const TotalValue = styled.span`
 
 export default function BasketItem({ product, qty }) {
   const handleQtyChange = (product, qty) => addToBasket(product, qty);
+  // If this check is done in handleQtyChange, the item disappears as soon as you hit zero.
+  // Doesn't feel good and user might enter zero by mistake, so this separate function will be called onBlur/on focus out.
+  // Will give user a chance to correct any input errors.
+  const checkQtyNotZero = (product, qty) => {
+    if (qty <= 0) removeFromBasket(product);
+  };
   const handleRemove = (product) => removeFromBasket(product);
 
   return (
@@ -60,6 +66,9 @@ export default function BasketItem({ product, qty }) {
             value={qty}
             onChange={(event) =>
               handleQtyChange(product, parseInt(event.currentTarget.value))
+            }
+            onBlur={(event) =>
+              checkQtyNotZero(product, parseInt(event.currentTarget.value))
             }
           />
         </SummaryRow>
