@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 const BasketLink = styled(Link)`
   position: relative;
+  text-decoration: none;
 
   img {
     width: 100%;
