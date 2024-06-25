@@ -10,6 +10,7 @@ const Container = styled.main`
 export default function ProductList({ products }) {
   return (
     <Container>
+      {products.length < 1 && 'No products found!'}
       {products.map((product) => (
         <ProductCard key={product.id} maxRating={5} product={product} />
       ))}
