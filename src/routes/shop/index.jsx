@@ -14,7 +14,8 @@ const ShopGrid = styled.div`
 
 const StickyFilter = styled(ProductFilter)`
   position: sticky;
-  top: 1rem;
+  /* Height of Header component plus padding of product list, will line up */
+  top: calc(135px + 1rem);
 `;
 
 export async function loader() {
