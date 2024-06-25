@@ -12,6 +12,11 @@ import styled from 'styled-components';
 const Content = styled.div`
   display: flex;
   gap: 2rem;
+  flex-direction: column;
+
+  @media (min-width: 860px) {
+    flex-direction: row;
+  }
 `;
 
 const ContainerHeading = styled.h2`

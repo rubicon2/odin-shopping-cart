@@ -4,8 +4,17 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 4fr 1.5fr;
   gap: 2rem;
+
+  @media (min-width: 560px) {
+    grid-template-columns: 1fr 4fr 1.5fr;
+  }
+`;
+
+const ProductImg = styled.img`
+  max-height: 250px;
+  /* To ensure centered on mobile layout, does not affect desktop as it is constrainted by grid column */
+  margin: 0 auto;
 `;
 
 const ProductInfo = styled.div`
@@ -49,7 +58,7 @@ export default function BasketItem({ product, qty }) {
 
   return (
     <Container>
-      <img src={product.image} />
+      <ProductImg src={product.image} />
       <ProductInfo>
         <h2>{product.title}</h2>
         <div>Price: £{product.price.toFixed(2)}</div>
