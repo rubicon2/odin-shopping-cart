@@ -23,7 +23,6 @@ const ImgContainer = styled.div`
 `;
 
 const ItemCount = styled.div`
-  position: absolute;
   padding: 0.1em 0.5em;
   border-radius: 10px;
   background-color: var(--color--dark);
@@ -31,6 +30,7 @@ const ItemCount = styled.div`
   font-weight: 500;
   /* For some reason using top and left to position, leaves the count in the wrong position when the styled component is mounted? */
   /* Commenting out position: absolute, saving, then uncommenting it and saving also fixes it. I am very confused. */
+  /* position: absolute; */
   /* top: 50px; */
   /* left: 25px; */
 
@@ -41,6 +41,8 @@ const ItemCount = styled.div`
   &.active {
     background-color: var(--accent-color);
   }
+
+  visibility: ${(props) => (props.count > 0 ? 'visible' : 'hidden')};
 `;
 
 export default function NavBasket() {
@@ -68,11 +70,9 @@ export default function NavBasket() {
           title={`${basketItemCount} items in basket`}
         />
       </ImgContainer>
-      {basketItemCount > 0 && (
-        <ItemCount className={isActive ? 'active' : ''}>
-          {basketItemCount}
-        </ItemCount>
-      )}
+      <ItemCount count={basketItemCount} className={isActive ? 'active' : ''}>
+        {basketItemCount}
+      </ItemCount>
     </BasketLink>
   );
 }
