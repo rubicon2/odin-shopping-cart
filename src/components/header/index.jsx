@@ -8,13 +8,20 @@ const Background = styled.header`
 `;
 
 const Content = styled(Container)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: max-content;
+  margin: 0 auto;
+
+  @media (min-width: 860px) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 const Logo = styled.img`
-  padding: 1.5rem 0;
+  width: min(90vw, 400px);
+  padding: min(5vw, 1.5rem) 0;
 `;
 
 export default function Header() {

@@ -6,15 +6,23 @@ const NavList = styled.ul`
   list-style: none;
   padding: 0;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 
   & > * {
     /* Display block so we can have some nice vertical padding */
     display: block;
     padding: 0.75rem 2rem;
+  }
 
-    &:last-child {
-      padding-right: 0;
+  @media (min-width: 860px) {
+    flex-direction: row;
+
+    & > * {
+      &:last-child {
+        padding-right: 0;
+      }
     }
   }
 `;
