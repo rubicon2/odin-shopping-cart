@@ -17,6 +17,8 @@ const ImgContainer = styled.div`
   /* Scale with font size, so will stay in proportion with text content, e.g. text links in a nav list */
   width: 3.5rem;
   height: 3.5rem;
+
+  /* Create a new stacking context for absolutely positioned child component ItemCount */
   position: relative;
 
   img {
