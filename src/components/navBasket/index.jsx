@@ -11,16 +11,16 @@ import styled from 'styled-components';
 
 const BasketLink = styled(Link)`
   text-decoration: none;
-
-  img {
-    width: 100%;
-  }
 `;
 
 const ImgContainer = styled.div`
   width: 50px;
   height: 50px;
   position: relative;
+
+  img {
+    height: 100%;
+  }
 `;
 
 const ItemCount = styled.div`
