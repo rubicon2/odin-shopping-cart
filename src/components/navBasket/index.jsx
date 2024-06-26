@@ -28,8 +28,9 @@ const ImgContainer = styled.div`
 
 const ItemCount = styled.div`
   padding: 0.1em 0.5em;
-  border-radius: 10px;
+  border-radius: 0.8rem;
   background-color: var(--color--dark);
+
   color: white;
   font-weight: 500;
   /* Scale font-size up with parent element size (also determined by rems), so it stays in the correct position no matter the size of ImgContainer */
