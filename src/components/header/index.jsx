@@ -22,9 +22,6 @@ const StickyBackground = styled.header`
 `;
 
 const Content = styled(Container)`
-  width: max-content;
-  margin: 0 auto;
-
   @media (min-width: 860px) {
     width: 100%;
     display: flex;

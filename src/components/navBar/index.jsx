@@ -14,12 +14,16 @@ const NavButton = styled.button`
   background-color: transparent;
   border: none;
 
+  /* So a larger area can be pressed to activate the button */
+  width: 100%;
+  /* To keep icon centered */
+  display: grid;
+  place-items: center;
+
   font-size: 1.3rem;
   font-weight: 700;
   text-decoration: none;
   color: var(--color--dark);
-
-  /* width: max-content; */
 
   @media (min-width: 860px) {
     display: none;
