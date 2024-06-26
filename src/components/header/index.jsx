@@ -36,6 +36,10 @@ const Content = styled(Container)`
 const Logo = styled.img`
   width: min(90vw, 400px);
   padding: min(5vw, 1.5rem) 0;
+
+  @media (max-width: 860px) {
+    padding-bottom: 0;
+  }
 `;
 
 const StickyLogo = styled(Logo)`
