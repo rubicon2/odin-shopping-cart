@@ -35,6 +35,8 @@ const Logo = styled.img`
   padding: min(5vw, 1.5rem) 0;
 
   @media (max-width: 860px) {
+    /* Center mobile logo */
+    margin: 0 auto;
     padding-bottom: 0;
   }
 `;
