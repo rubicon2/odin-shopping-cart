@@ -71,11 +71,11 @@ const NavLinkStyled = styled(NavLink)`
 `;
 
 export default function NavBar() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(window.innerWidth >= 860);
 
   useEffect(() => {
     const handleResize = () => {
-      if (!open && window.innerWidth >= 860) setOpen(true);
+      if (window.innerWidth >= 860) setOpen(true);
       else setOpen(false);
     };
 
