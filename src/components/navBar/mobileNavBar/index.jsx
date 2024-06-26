@@ -29,13 +29,7 @@ const MenuIcon = styled.img`
 const NavList = styled.ul`
   list-style: none;
   padding: 0;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
   text-align: center;
-
-  /* width: 100%; */
 
   * {
     /* Display block so we can have some nice vertical padding, change dimensions, whole horizontal area of links clickable */
