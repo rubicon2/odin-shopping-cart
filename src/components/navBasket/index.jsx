@@ -10,7 +10,6 @@ import styled from 'styled-components';
 // red.src = BasketIconRed;
 
 const BasketLink = styled(Link)`
-  position: relative;
   text-decoration: none;
 
   img {
@@ -21,6 +20,7 @@ const BasketLink = styled(Link)`
 const ImgContainer = styled.div`
   width: 50px;
   height: 50px;
+  position: relative;
 `;
 
 const ItemCount = styled.div`
@@ -29,15 +29,10 @@ const ItemCount = styled.div`
   background-color: var(--color--dark);
   color: white;
   font-weight: 500;
-  /* For some reason using top and left to position, leaves the count in the wrong position when the styled component is mounted? */
-  /* Commenting out position: absolute, saving, then uncommenting it and saving also fixes it. I am very confused. */
-  /* position: absolute; */
-  /* top: 50px; */
-  /* left: 25px; */
 
-  /* However this seems to work fine */
-  margin-top: -20px;
-  margin-left: 25px;
+  position: absolute;
+  bottom: -5px;
+  right: 0;
 
   &.active {
     background-color: var(--accent-color);
@@ -70,10 +65,10 @@ export default function NavBasket() {
           alt={`${basketItemCount} items in basket`}
           title={`${basketItemCount} items in basket`}
         />
+        <ItemCount count={basketItemCount} className={isActive ? 'active' : ''}>
+          {basketItemCount}
+        </ItemCount>
       </ImgContainer>
-      <ItemCount count={basketItemCount} className={isActive ? 'active' : ''}>
-        {basketItemCount}
-      </ItemCount>
     </BasketLink>
   );
 }
