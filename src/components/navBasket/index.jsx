@@ -14,8 +14,9 @@ const BasketLink = styled(Link)`
 `;
 
 const ImgContainer = styled.div`
-  width: 50px;
-  height: 50px;
+  /* Scale with font size, so will stay in proportion with text content, e.g. text links in a nav list */
+  width: 3.5rem;
+  height: 3.5rem;
   position: relative;
 
   img {
@@ -29,6 +30,8 @@ const ItemCount = styled.div`
   background-color: var(--color--dark);
   color: white;
   font-weight: 500;
+  /* Scale font-size up with parent element size (also determined by rems), so it stays in the correct position no matter the size of ImgContainer */
+  font-size: 1.2rem;
 
   position: absolute;
   bottom: -5px;
