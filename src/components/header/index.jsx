@@ -28,7 +28,6 @@ const Content = styled(Container)`
   }
 
   @media (min-width: 860px) {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
