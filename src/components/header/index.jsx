@@ -22,6 +22,11 @@ const StickyBackground = styled.header`
 `;
 
 const Content = styled(Container)`
+  @media (max-width: 859px) {
+    /* Zero padding on container so the content spans the whole width of the viewport - so hovering over buttons looks good when the buttons/links darken */
+    padding: 0;
+  }
+
   @media (min-width: 860px) {
     width: 100%;
     display: flex;
@@ -32,12 +37,11 @@ const Content = styled(Container)`
 
 const Logo = styled.img`
   width: min(90vw, 400px);
-  padding: min(5vw, 1.5rem) 0;
+  padding: min(5vw, 1rem) 0;
 
   @media (max-width: 860px) {
     /* Center mobile logo */
     margin: 0 auto;
-    padding-bottom: 0;
   }
 `;
 
