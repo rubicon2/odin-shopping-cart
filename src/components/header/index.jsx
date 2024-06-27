@@ -8,7 +8,7 @@ const Background = styled.header`
   position: relative;
   z-index: 2;
 
-  @media (min-width: 859px) {
+  @media (min-width: 860px) {
     display: none;
   }
 `;
@@ -39,14 +39,14 @@ const Logo = styled.img`
   width: min(90vw, 400px);
   padding: min(5vw, 1rem) 0;
 
-  @media (max-width: 860px) {
+  @media (max-width: 859px) {
     /* Center mobile logo */
     margin: 0 auto;
   }
 `;
 
 const StickyLogo = styled(Logo)`
-  @media (max-width: 860px) {
+  @media (max-width: 859px) {
     display: none;
   }
 `;
