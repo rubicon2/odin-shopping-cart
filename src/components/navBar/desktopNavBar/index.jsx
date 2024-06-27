@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-// This exists just so I can import it into NavBar and set display to none at the breakpoint. I hate it.
+// This exists just so I can import it into NavBar and set display to none at the breakpoint.
 export const DesktopNavBarStyled = styled.div``;
 
 const NavList = styled.ul`

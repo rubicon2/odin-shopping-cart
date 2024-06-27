@@ -2,8 +2,9 @@ import menuIcon from '/burger-menu.svg';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-// This exists just so I can import it into NavBar and set display to none at the breakpoint. I hate it.
-export const MobileNavBarStyled = styled.div``;
+export const MobileNavBarStyled = styled.div`
+  box-shadow: 5px 5px 5px 5px var(--color--shadow);
+`;
 
 const NavButton = styled.button`
   /* Add background color so can change brightness on hover */
@@ -33,6 +34,8 @@ const MenuIcon = styled.img`
 `;
 
 const NavList = styled.ul`
+  box-shadow: 5px 5px 5px 5px var(--color--shadow);
+
   /* Ensure there are no gaps between list items */
   background-color: white;
 

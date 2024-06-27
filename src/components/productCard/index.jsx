@@ -93,6 +93,7 @@ export default function ProductCard({ className, maxRating, product }) {
             <label htmlFor={`${product.id}-qty`}>Qty:</label>
             <input
               type="number"
+              min="1"
               id={`${product.id}-qty`}
               value={qty}
               onChange={(event) => setQty(parseInt(event.currentTarget.value))}

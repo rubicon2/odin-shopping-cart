@@ -1,3 +1,5 @@
+import FilterIcon from '/filter-white.svg';
+import CloseIcon from '/close-white.svg';
 import PriceFilter from '../../priceFilter';
 import CategoryFilter from '../../categoryFilter';
 import RatingFilter from '../../ratingFilter';
@@ -5,33 +7,29 @@ import styled from 'styled-components';
 import ShopSectionContainer from '../../shopSectionContainer';
 import { useState } from 'react';
 
-// This component should really not be part of the main content, but it currently is.
-// It makes sense for the desktop version, and it is alongside the main content (product list),
-// but on mobile that is replaced by a sticky button at the bottom that is outside of the main content flow.
-// Doesn't work - it is constrained by the main content container!
-// Is the solution to lift up the media query to the shop route, and have the desktop product filter be a child of the main page content,
-// and the mobile version a child of the route itself and not constrained by the main content container?
-
-export const MobileProductFilterContainer = styled(ShopSectionContainer)`
-  position: fixed;
+export const MobileProductFilterContainer = styled.div`
+  position: sticky;
   bottom: 0;
-  /* height: 100vh; */
-  width: 95vw;
-  max-height: 50vh;
-  /* background-color: #c50000f4; */
-  /* color: white; */
+
+  max-height: 80vh;
+  padding: 0;
 
   overflow-y: scroll;
+
+  box-shadow: -5px -5px 5px 5px var(--color--shadow);
 `;
 
 const ShowFilterButton = styled.button`
   /* Add background color so can change brightness on hover */
   background-color: var(--accent-color);
+  color: white;
   border: none;
 
   /* So a larger area can be pressed to activate the button */
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 1.25rem 0;
+  font-weight: 700;
+  font-size: 1.3rem;
 
   position: sticky;
   bottom: 0;
@@ -48,6 +46,11 @@ const ShowFilterButton = styled.button`
   &:active {
     background-color: var(--accent-color--darkest);
   }
+`;
+
+const FilterOptionsContainer = styled(ShopSectionContainer)`
+  border: none;
+  box-shadow: -5px -5px 5px 5px var(--color--shadow);
 `;
 
 export default function MobileProductFilter({
@@ -67,7 +70,7 @@ export default function MobileProductFilter({
     // but "forwardedAs" is needed for a react function component (i.e. function MyComponent()).
     <MobileProductFilterContainer className={className} forwardedAs="aside">
       {open && (
-        <div>
+        <FilterOptionsContainer>
           <PriceFilter
             minPrice={minPrice}
             maxPrice={maxPrice}
@@ -79,14 +82,13 @@ export default function MobileProductFilter({
             maxRating={maxRating}
             onChange={onQueryChange}
           />
-          {/* Just for testing a long vertical layout */}
-          <CategoryFilter categories={categories} onChange={onQueryChange} />
-          <CategoryFilter categories={categories} onChange={onQueryChange} />
-          <CategoryFilter categories={categories} onChange={onQueryChange} />
-        </div>
+        </FilterOptionsContainer>
       )}
       <ShowFilterButton onClick={() => setOpen(!open)}>
-        Filters
+        <img
+          src={open ? CloseIcon : FilterIcon}
+          alt={open ? 'Close Filters' : 'Open Filters'}
+        />
       </ShowFilterButton>
     </MobileProductFilterContainer>
   );

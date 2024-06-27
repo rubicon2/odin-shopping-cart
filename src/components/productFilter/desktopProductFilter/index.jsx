@@ -5,6 +5,9 @@ import RatingFilter from '../../ratingFilter';
 import styled from 'styled-components';
 
 export const DesktopProductFilterContainer = styled(ShopSectionContainer)`
+  position: sticky;
+  /* Height of Header component plus padding of product list, will line up with top of product list */
+  top: calc(119px + 1rem);
   height: min-content;
 `;
 
