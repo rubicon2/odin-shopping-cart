@@ -8,20 +8,33 @@ import { addToBasket } from '../../apis/user/user';
 import styled from 'styled-components';
 import { useState } from 'react';
 
+const ProductContainer = styled(ShopSectionContainer)`
+  display: flex;
+  flex-direction: column;
+`;
+
 const RatingContainer = styled.div`
   display: flex;
 `;
 
 const ProductImg = styled.img`
-  height: 350px;
+  /* Using height and not max-height so all images are the same size */
+  height: 300px;
   /* Preserve the aspect ratio */
   object-fit: contain;
   margin: 0 auto;
 `;
 
 const ProductInfo = styled.div`
-  display: grid;
-  grid-template-columns: 2.5fr 1fr;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: 970px) {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+  }
 `;
 
 const BuySection = styled.div`
@@ -60,7 +73,7 @@ export default function ProductCard({ className, maxRating, product }) {
   for (let i = 1; i <= maxRating; i++) ratings.push(i);
 
   return (
-    <ShopSectionContainer className={className}>
+    <ProductContainer className={className}>
       <ProductImg src={product.image} alt={product.title} />
       <ProductInfo>
         <div>
@@ -80,6 +93,7 @@ export default function ProductCard({ className, maxRating, product }) {
             <label htmlFor={`${product.id}-qty`}>Qty:</label>
             <input
               type="number"
+              min="1"
               id={`${product.id}-qty`}
               value={qty}
               onChange={(event) => setQty(parseInt(event.currentTarget.value))}
@@ -94,6 +108,6 @@ export default function ProductCard({ className, maxRating, product }) {
           </BuyButton>
         </BuySection>
       </ProductInfo>
-    </ShopSectionContainer>
+    </ProductContainer>
   );
 }

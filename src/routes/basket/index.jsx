@@ -12,6 +12,11 @@ import styled from 'styled-components';
 const Content = styled.div`
   display: flex;
   gap: 2rem;
+  flex-direction: column;
+
+  @media (min-width: 860px) {
+    flex-direction: row;
+  }
 `;
 
 const ContainerHeading = styled.h2`
@@ -27,7 +32,8 @@ const SummaryContainer = styled(ShopSectionContainer)`
   flex: 0.3;
   height: min-content;
   position: sticky;
-  top: 1rem;
+  /* Height of Header component plus padding of basket details, will line up */
+  top: calc(119px + 1rem);
 `;
 
 const SummaryContent = styled.div`
@@ -56,11 +62,11 @@ const CheckoutButton = styled(Button)`
 
   &:hover,
   &:focus-visible {
-    filter: brightness(0.9);
+    background-color: var(--accent-color--dark);
   }
 
   &:active {
-    filter: brightness(0.5);
+    background-color: var(--accent-color--darkest);
   }
 `;
 

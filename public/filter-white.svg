@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="26"
+   viewBox="0 -960 800 520"
+   width="40"
+   fill="#ffffff"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="filter-white.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="17.3125"
+     inkscape:cx="19.98556"
+     inkscape:cy="11.98556"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     d="m 0,-440 v -60 h 400 v 60 z m 0,-210 v -60 h 200 v 60 z m 0,-210 v -60 h 200 v 60 z m 758,420 -160,-160 q -26,20 -56,30 -30,10 -62,10 -83,0 -141.5,-58.5 Q 280,-677 280,-760 280,-843 338.5,-901.5 397,-960 480,-960 q 83,0 141.5,58.5 58.5,58.5 58.5,141.5 0,32 -10,62 -10,30 -30,56 l 160,160 z M 479.76,-620 q 58.24,0 99.24,-40.76 41,-40.77 41,-99 0,-58.24 -40.76,-99.24 -40.77,-41 -99,-41 -58.24,0 -99.24,40.76 -41,40.77 -41,99 0,58.24 40.76,99.24 40.77,41 99,41 z"
+     id="path1" />
+</svg>

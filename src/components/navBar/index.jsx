@@ -1,25 +1,26 @@
+import MobileNavBar, { MobileNavBarStyled } from './mobileNavBar';
+import DesktopNavBar, { DesktopNavBarStyled } from './desktopNavBar';
 import NavBasket from '../navBasket';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const NavList = styled.ul`
-  list-style: none;
-  padding: 0;
-  display: flex;
-  align-items: center;
+const Nav = styled.nav`
+  ${DesktopNavBarStyled} {
+    display: none;
+  }
 
-  & > * {
-    /* Display block so we can have some nice vertical padding */
-    display: block;
-    padding: 0.75rem 2rem;
+  @media (min-width: 860px) {
+    ${DesktopNavBarStyled} {
+      display: block;
+    }
 
-    &:last-child {
-      padding-right: 0;
+    ${MobileNavBarStyled} {
+      display: none;
     }
   }
 `;
 
-const NavLinkStyled = styled(NavLink)`
+export const NavLinkStyled = styled(NavLink)`
   font-size: 1.3rem;
   font-weight: 700;
   text-decoration: none;
@@ -34,34 +35,24 @@ const NavLinkStyled = styled(NavLink)`
   }
 `;
 
+// Don't really like baking in the styles like this...
+// The whole point is for the style and functionality to be contained within MobileNavBar and DesktopNavBar.
+// But need to also be able to pass in components like NavBasket!
+const navListItems = [
+  <NavLinkStyled key="/" to="/">
+    Home
+  </NavLinkStyled>,
+  <NavLinkStyled key="/shop" to="/shop">
+    Shop
+  </NavLinkStyled>,
+  <NavBasket key="NavBasket" />,
+];
+
 export default function NavBar() {
   return (
-    <nav>
-      <NavList>
-        <li>
-          <NavLinkStyled
-            to="/"
-            className={(isActive, isPending) =>
-              isActive ? 'active' : isPending ? 'pending' : ''
-            }
-          >
-            Home
-          </NavLinkStyled>
-        </li>
-        <li>
-          <NavLinkStyled
-            to="/shop"
-            className={(isActive, isPending) =>
-              isActive ? 'active' : isPending ? 'pending' : ''
-            }
-          >
-            Shop
-          </NavLinkStyled>
-        </li>
-        <li>
-          <NavBasket />
-        </li>
-      </NavList>
-    </nav>
+    <Nav>
+      <MobileNavBar navListItems={navListItems} />
+      <DesktopNavBar navListItems={navListItems} />
+    </Nav>
   );
 }

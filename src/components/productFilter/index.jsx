@@ -1,9 +1,27 @@
-import ShopSectionContainer from '../shopSectionContainer';
-import PriceFilter from '../priceFilter';
-import CategoryFilter from '../categoryFilter';
-import RatingFilter from '../ratingFilter';
+import DesktopProductFilter, {
+  DesktopProductFilterContainer,
+} from './desktopProductFilter';
+import MobileProductFilter, {
+  MobileProductFilterContainer,
+} from './mobileProductFilter';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+
+const FilterContainer = styled.div`
+  ${DesktopProductFilterContainer} {
+    display: none;
+  }
+
+  @media (min-width: 860px) {
+    ${DesktopProductFilterContainer} {
+      display: block;
+    }
+
+    ${MobileProductFilterContainer} {
+      display: none;
+    }
+  }
+`;
 
 function getLowestPrice(products) {
   return products
@@ -20,10 +38,6 @@ function getHighestPrice(products) {
 function getCategories(products) {
   return Array.from(new Set(products.map((product) => product.category)));
 }
-
-const FilterContainer = styled(ShopSectionContainer)`
-  height: min-content;
-`;
 
 export default function ProductFilter({ className, products, onChange }) {
   const minPrice = getLowestPrice(products);
@@ -61,18 +75,26 @@ export default function ProductFilter({ className, products, onChange }) {
   }, []);
 
   return (
-    // Using "as" breaks the inherited styles, but "forwardedAs" doesn't (???)
-    <FilterContainer className={className} forwardedAs="aside">
-      <PriceFilter
+    <FilterContainer>
+      <DesktopProductFilter
+        className={className}
+        forwardedAs="aside"
         minPrice={minPrice}
         maxPrice={maxPrice}
-        onChange={handleQueryChange}
-      />
-      <CategoryFilter categories={categories} onChange={handleQueryChange} />
-      <RatingFilter
+        categories={categories}
         initialRating={4}
         maxRating={5}
-        onChange={handleQueryChange}
+        onQueryChange={handleQueryChange}
+      />
+      <MobileProductFilter
+        className={className}
+        forwardedAs="aside"
+        minPrice={minPrice}
+        maxPrice={maxPrice}
+        categories={categories}
+        initialRating={4}
+        maxRating={5}
+        onQueryChange={handleQueryChange}
       />
     </FilterContainer>
   );

@@ -10,37 +10,41 @@ import styled from 'styled-components';
 // red.src = BasketIconRed;
 
 const BasketLink = styled(Link)`
-  position: relative;
-
-  img {
-    width: 100%;
-  }
+  text-decoration: none;
 `;
 
 const ImgContainer = styled.div`
-  width: 50px;
-  height: 50px;
+  /* Scale with font size, so will stay in proportion with text content, e.g. text links in a nav list */
+  width: 3.5rem;
+  height: 3.5rem;
+
+  /* Create a new stacking context for absolutely positioned child component ItemCount */
+  position: relative;
+
+  img {
+    height: 100%;
+  }
 `;
 
 const ItemCount = styled.div`
-  position: absolute;
   padding: 0.1em 0.5em;
-  border-radius: 10px;
+  border-radius: 0.8rem;
   background-color: var(--color--dark);
+
   color: white;
   font-weight: 500;
-  /* For some reason using top and left to position, leaves the count in the wrong position when the styled component is mounted? */
-  /* Commenting out position: absolute, saving, then uncommenting it and saving also fixes it. I am very confused. */
-  /* top: 50px; */
-  /* left: 25px; */
+  /* Scale font-size up with parent element size (also determined by rems), so it stays in the correct position no matter the size of ImgContainer */
+  font-size: 1.2rem;
 
-  /* However this seems to work fine */
-  margin-top: -20px;
-  margin-left: 25px;
+  position: absolute;
+  bottom: -5px;
+  right: 0;
 
   &.active {
     background-color: var(--accent-color);
   }
+
+  visibility: ${(props) => (props.count > 0 ? 'visible' : 'hidden')};
 `;
 
 export default function NavBasket() {
@@ -67,12 +71,10 @@ export default function NavBasket() {
           alt={`${basketItemCount} items in basket`}
           title={`${basketItemCount} items in basket`}
         />
-      </ImgContainer>
-      {basketItemCount > 0 && (
-        <ItemCount className={isActive ? 'active' : ''}>
+        <ItemCount count={basketItemCount} className={isActive ? 'active' : ''}>
           {basketItemCount}
         </ItemCount>
-      )}
+      </ImgContainer>
     </BasketLink>
   );
 }
