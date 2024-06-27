@@ -33,7 +33,7 @@ const SummaryContainer = styled(ShopSectionContainer)`
   height: min-content;
   position: sticky;
   /* Height of Header component plus padding of basket details, will line up */
-  top: calc(135px + 1rem);
+  top: calc(119px + 1rem);
 `;
 
 const SummaryContent = styled.div`

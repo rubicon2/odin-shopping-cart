@@ -20,8 +20,8 @@ const StickyFilter = styled(ProductFilter)`
 
   @media (min-width: 860px) {
     position: sticky;
-    /* Height of Header component plus padding of product list, will line up... but not with mobile as menu layout changes! */
-    top: calc(135px + 1rem);
+    /* Height of Header component plus padding of product list, will line up with top of product list */
+    top: calc(119px + 1rem);
   }
 `;
 
