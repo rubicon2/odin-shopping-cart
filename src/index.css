@@ -63,9 +63,12 @@ body {
 #root {
   --color--dark: #252525;
   --color--light: #a3a3a3;
+  --color--button--hover: #dddddd;
+  --color--button--select: #a1a1a1;
   --color--shadow: #64646413;
   --accent-color: #e00f0f;
   --accent-color--dark: #9c0c0c;
+  --accent-color--darkest: #6d0808;
 
   font-family: 'Open Sans', sans-serif, serif;
 }

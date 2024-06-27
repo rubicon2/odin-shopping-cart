@@ -10,11 +10,11 @@ const StyledButton = styled.button`
 
   &:hover,
   &:focus-visible {
-    filter: brightness(0.9);
+    background-color: var(--color--button--hover);
   }
 
   &:active {
-    filter: brightness(0.5);
+    background-color: var(--color--button--select);
   }
 `;
 

@@ -20,7 +20,11 @@ const NavButton = styled.button`
 
   &:hover,
   &:focus-visible {
-    filter: brightness(0.9);
+    background-color: var(--color--button--hover);
+  }
+
+  &:active {
+    background-color: var(--color--button--select);
   }
 `;
 
@@ -52,7 +56,11 @@ const NavList = styled.ul`
 
     &:hover,
     &:focus-visible {
-      filter: brightness(0.9);
+      background-color: var(--color--button--hover);
+    }
+
+    &:active {
+      background-color: var(--color--button--select);
     }
   }
 `;

@@ -62,11 +62,11 @@ const CheckoutButton = styled(Button)`
 
   &:hover,
   &:focus-visible {
-    filter: brightness(0.9);
+    background-color: var(--accent-color--dark);
   }
 
   &:active {
-    filter: brightness(0.5);
+    background-color: var(--accent-color--darkest);
   }
 `;
 
