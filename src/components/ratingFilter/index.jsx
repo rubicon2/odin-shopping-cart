@@ -45,7 +45,16 @@ export default function RatingFilter({
       <FilterTitle>Rating</FilterTitle>
       <RatingContainer>
         {ratings.map((rating) => (
-          <RatingButton key={rating} value={rating} onClick={handleChange}>
+          <RatingButton
+            key={rating}
+            value={rating}
+            onClick={handleChange}
+            aria-label={
+              rating < maxRating
+                ? `Filter products by rating: ${rating} stars and above`
+                : `Filter products by rating: ${rating} stars only`
+            }
+          >
             <RatingStar isChecked={selectedMinRating >= rating} />
           </RatingButton>
         ))}
