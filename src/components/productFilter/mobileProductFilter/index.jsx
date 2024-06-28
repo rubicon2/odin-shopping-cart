@@ -68,7 +68,11 @@ export default function MobileProductFilter({
     // Using "as" breaks the inherited styles, but "forwardedAs" doesn't (???)
     // I think "as" works for overriding a styled component (i.e. const MyStyledThing = styled.div``),
     // but "forwardedAs" is needed for a react function component (i.e. function MyComponent()).
-    <MobileProductFilterContainer className={className} forwardedAs="aside">
+    <MobileProductFilterContainer
+      className={className}
+      forwardedAs="aside"
+      aria-label="Product filters"
+    >
       {open && (
         <FilterOptionsContainer>
           <PriceFilter
