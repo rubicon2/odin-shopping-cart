@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import ShopSectionContainer from '../../shopSectionContainer';
 import { useState } from 'react';
 
-export const MobileProductFilterContainer = styled.div`
+export const MobileProductFilterContainer = styled.aside`
   position: sticky;
   bottom: 0;
 
@@ -70,7 +70,6 @@ export default function MobileProductFilter({
     // but "forwardedAs" is needed for a react function component (i.e. function MyComponent()).
     <MobileProductFilterContainer
       className={className}
-      forwardedAs="aside"
       aria-label="Product filters"
     >
       {open && (
