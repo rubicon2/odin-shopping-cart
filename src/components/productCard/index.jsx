@@ -69,6 +69,7 @@ const handleBuy = async (product, qty) => {
 export default function ProductCard({ className, maxRating, product }) {
   const [qty, setQty] = useState(1);
   const priceString = '£' + product.price.toFixed(2);
+  const totalPriceString = '£' + (product.price * qty).toFixed(2);
   const ratings = [];
   for (let i = 1; i <= maxRating; i++) ratings.push(i);
 
@@ -77,8 +78,10 @@ export default function ProductCard({ className, maxRating, product }) {
       <ProductImg src={product.image} alt={product.title} />
       <ProductInfo>
         <div>
-          <h3>{product.title}</h3>
-          <RatingContainer>
+          <h3 id={`${product.id}-title`}>{product.title}</h3>
+          <RatingContainer
+            aria-label={`Rated ${product.rating.rate} out of ${maxRating} stars`}
+          >
             {ratings.map((rating) => (
               <RatingStar
                 key={rating}
@@ -102,8 +105,8 @@ export default function ProductCard({ className, maxRating, product }) {
           <BuyButton onClick={() => handleBuy(product, qty)}>
             <img
               src={BuyIcon}
-              title={`Buy ${product.title} for ${priceString}`}
-              alt={`Buy ${product.title} for ${priceString}`}
+              title={`Buy ${qty} of ${product.title} for a total of ${totalPriceString}`}
+              alt=""
             />
           </BuyButton>
         </BuySection>
