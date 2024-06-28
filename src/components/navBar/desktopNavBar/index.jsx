@@ -1,3 +1,5 @@
+import { NavBarLink } from '../navBarLink';
+import NavBasket from '../../navBasket';
 import styled from 'styled-components';
 
 // This exists just so I can import it into NavBar and set display to none at the breakpoint.
@@ -10,13 +12,16 @@ const NavList = styled.ul`
   gap: 0 4rem;
 `;
 
-export default function DesktopNavBar({ navListItems }) {
+export default function DesktopNavBar({ links }) {
   return (
     <DesktopNavBarStyled>
       <NavList>
-        {navListItems.map((item) => (
-          <li key={item.key}>{item}</li>
+        {links.map((link) => (
+          <li key={link.to}>
+            <NavBarLink to={link.to}>{link.innerText}</NavBarLink>
+          </li>
         ))}
+        <NavBasket />
       </NavList>
     </DesktopNavBarStyled>
   );
