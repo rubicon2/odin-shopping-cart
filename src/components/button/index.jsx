@@ -8,19 +8,39 @@ const StyledButton = styled.button`
   border: 1px solid var(--color--light);
   border-radius: 5px;
 
-  &:hover,
-  &:focus-visible {
-    background-color: var(--color--button--hover);
+  &:not(:disabled) {
+    &:hover,
+    &:focus-visible {
+      background-color: var(--color--button--hover);
+    }
+
+    &:active {
+      background-color: var(--color--button--select);
+    }
   }
 
-  &:active {
-    background-color: var(--color--button--select);
+  &:disabled {
+    background-color: var(--color--shadow);
+    border: 1px solid var(--color--light);
+    color: var(--color--light);
+    cursor: not-allowed;
   }
 `;
 
-export default function Button({ className, children, value, onClick }) {
+export default function Button({
+  className,
+  children,
+  value,
+  disabled = false,
+  onClick,
+}) {
   return (
-    <StyledButton className={className} value={value} onClick={onClick}>
+    <StyledButton
+      className={className}
+      disabled={disabled}
+      value={value}
+      onClick={onClick}
+    >
       {children}
     </StyledButton>
   );

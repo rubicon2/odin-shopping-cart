@@ -2,6 +2,14 @@
 
 https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart
 
+## Extra, Extra
+
+Looking back at the project brief, I actually developed a number of extra features that were not required, which may go some way to explain why I spent so long on it.
+
+- Integration with localforage API to save and load user data between sessions
+- A product filter on the shop page that allows the user to narrow down the product listings
+- A fully responsive layout that works on mobile and desktop
+
 ## Challenges
 
 ### Responsive Nav Bars

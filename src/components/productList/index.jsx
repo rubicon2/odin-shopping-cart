@@ -9,7 +9,7 @@ const Container = styled.main`
 
 export default function ProductList({ products }) {
   return (
-    <Container>
+    <Container aria-label="Product list">
       {products.length < 1 && 'No products found!'}
       {products.map((product) => (
         <ProductCard key={product.id} maxRating={5} product={product} />

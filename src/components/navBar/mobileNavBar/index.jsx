@@ -80,7 +80,7 @@ export default function MobileNavBar({ links }) {
   return (
     <MobileNavBarStyled>
       <MenuButtons>
-        <NavButton onClick={() => setOpen(!open)}>
+        <NavButton onClick={() => setOpen(!open)} tabIndex={1}>
           <MenuIcon
             src={menuIcon}
             alt={open ? 'Close nav menu' : 'Open nav menu'}
@@ -92,7 +92,9 @@ export default function MobileNavBar({ links }) {
         <NavList>
           {links.map((link) => (
             <li key={link.to}>
-              <NavBarLink to={link.to}>{link.innerText}</NavBarLink>
+              <NavBarLink to={link.to} tabIndex={1}>
+                {link.innerText}
+              </NavBarLink>
             </li>
           ))}
         </NavList>

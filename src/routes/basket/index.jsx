@@ -60,13 +60,15 @@ const CheckoutButton = styled(Button)`
   padding: 0.75em 1.5em;
   border: none;
 
-  &:hover,
-  &:focus-visible {
-    background-color: var(--accent-color--dark);
-  }
+  &:not(:disabled) {
+    &:hover,
+    &:focus-visible {
+      background-color: var(--accent-color--dark);
+    }
 
-  &:active {
-    background-color: var(--accent-color--darkest);
+    &:active {
+      background-color: var(--accent-color--darkest);
+    }
   }
 `;
 
@@ -124,7 +126,9 @@ export default function Basket() {
               Total:
               <div>£{basketValue.toFixed(2)}</div>
             </Row>
-            <CheckoutButton>Checkout</CheckoutButton>
+            <CheckoutButton disabled={productsInBasket < 1}>
+              Checkout
+            </CheckoutButton>
           </SummaryContent>
         </SummaryContainer>
       </Content>

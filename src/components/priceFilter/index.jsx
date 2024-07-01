@@ -25,8 +25,9 @@ export default function PriceFilter({ minPrice, maxPrice, onChange }) {
       <FilterLabel>
         Min:
         <input
+          aria-label="Filter by minimum price"
           type="number"
-          name="min-price"
+          inputMode="decimal"
           value={selectedMin}
           min={minPrice}
           max={selectedMax}
@@ -36,8 +37,9 @@ export default function PriceFilter({ minPrice, maxPrice, onChange }) {
       <FilterLabel>
         Max:
         <input
+          aria-label="Filter by maximum price"
           type="number"
-          name="max-price"
+          inputMode="decimal"
           value={selectedMax}
           min={selectedMin}
           max={maxPrice}
