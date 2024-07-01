@@ -93,11 +93,14 @@ export default function ProductCard({ className, maxRating, product }) {
         <BuySection>
           <div>{priceString}</div>
           <Row>
-            <label htmlFor={`${product.id}-qty`}>Qty:</label>
+            <label htmlFor={`${product.id}-qty-input`} aria-hidden={true}>
+              Qty:
+            </label>
             <input
               type="number"
               min="1"
-              id={`${product.id}-qty`}
+              id={`${product.id}-qty-input`}
+              aria-label="Select quantity"
               value={qty}
               onChange={(event) => setQty(parseInt(event.currentTarget.value))}
             />
