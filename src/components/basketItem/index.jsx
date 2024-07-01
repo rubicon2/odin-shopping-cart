@@ -1,4 +1,5 @@
 import Button from '../button';
+import SelectRange from '../selectRange';
 import { removeFromBasket, setQuantity } from '../../apis/user/user';
 import styled from 'styled-components';
 
@@ -69,11 +70,11 @@ export default function BasketItem({ product, qty }) {
       <ProductSummary>
         <SummaryRow>
           <label htmlFor={`${product.id}-qty`}>Qty:</label>
-          <input
+          <SelectRange
             id={`${product.id}-qty`}
-            type="number"
-            inputMode="numeric"
-            min="1"
+            aria-label="Select quantity"
+            min={1}
+            max={9}
             value={qty}
             onChange={(event) =>
               handleQtyChange(product, parseInt(event.currentTarget.value))

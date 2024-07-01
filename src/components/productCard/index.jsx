@@ -3,6 +3,7 @@ import BuyIcon from '/buy.svg';
 import ShopSectionContainer from '../shopSectionContainer';
 import Button from '../button';
 import RatingStar from '../ratingStar';
+import SelectRange from '../selectRange';
 import { addToBasket } from '../../apis/user/user';
 
 import styled from 'styled-components';
@@ -55,11 +56,11 @@ const BuyButton = styled(Button)`
 
 const Row = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
+`;
 
-  * {
-    width: 50%;
-  }
+const QtySelect = styled(SelectRange)`
+  padding-right: 1em;
 `;
 
 const handleBuy = async (product, qty) => {
@@ -96,12 +97,10 @@ export default function ProductCard({ className, maxRating, product }) {
             <label htmlFor={`${product.id}-qty-input`} aria-hidden={true}>
               Qty:
             </label>
-            <input
-              type="number"
-              inputMode="numeric"
-              min="1"
+            <QtySelect
               id={`${product.id}-qty-input`}
-              aria-label="Select quantity"
+              min={1}
+              max={9}
               value={qty}
               onChange={(event) => setQty(parseInt(event.currentTarget.value))}
             />
