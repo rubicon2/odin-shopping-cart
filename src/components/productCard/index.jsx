@@ -60,7 +60,7 @@ const Row = styled.div`
 `;
 
 const QtySelect = styled(SelectRange)`
-  padding-right: 1em;
+  padding-right: 1.5em;
 `;
 
 const handleBuy = async (product, qty) => {
