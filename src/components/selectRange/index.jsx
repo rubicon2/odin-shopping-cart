@@ -6,6 +6,7 @@ export default function SelectRange({
   onBlur,
   id,
   className,
+  ariaLabel,
 }) {
   const possibleValues = [];
   for (let current = min; current <= max; current++) {
@@ -15,6 +16,7 @@ export default function SelectRange({
   return (
     <select
       id={id}
+      aria-label={ariaLabel}
       className={className}
       value={value}
       onChange={onChange}

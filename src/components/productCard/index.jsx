@@ -102,6 +102,7 @@ export default function ProductCard({ className, maxRating, product }) {
               min={1}
               max={9}
               value={qty}
+              ariaLabel="Select quantity"
               onChange={(event) => setQty(parseInt(event.currentTarget.value))}
             />
           </Row>

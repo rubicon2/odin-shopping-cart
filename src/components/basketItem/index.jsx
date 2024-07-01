@@ -72,7 +72,7 @@ export default function BasketItem({ product, qty }) {
           <label htmlFor={`${product.id}-qty`}>Qty:</label>
           <SelectRange
             id={`${product.id}-qty`}
-            aria-label="Select quantity"
+            ariaLabel="Select quantity"
             min={1}
             max={9}
             value={qty}
