@@ -72,6 +72,7 @@ export default function BasketItem({ product, qty }) {
           <input
             id={`${product.id}-qty`}
             type="number"
+            inputMode="numeric"
             min="1"
             value={qty}
             onChange={(event) =>

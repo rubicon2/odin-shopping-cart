@@ -98,6 +98,7 @@ export default function ProductCard({ className, maxRating, product }) {
             </label>
             <input
               type="number"
+              inputMode="numeric"
               min="1"
               id={`${product.id}-qty-input`}
               aria-label="Select quantity"
