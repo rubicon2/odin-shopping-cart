@@ -61,7 +61,7 @@ export default function BasketItem({ product, qty }) {
     <Container>
       <ProductImg src={product.image} />
       <ProductInfo>
-        <h2>{product.title}</h2>
+        <h3>{product.title}</h3>
         <div>Price: £{product.price.toFixed(2)}</div>
         <Button value={product.id} onClick={() => handleRemove(product)}>
           Remove
