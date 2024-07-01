@@ -89,7 +89,7 @@ export default function MobileNavBar({ links }) {
         <NavBasket />
       </MenuButtons>
       {open && (
-        <NavList aria-hidden={!open}>
+        <NavList>
           {links.map((link) => (
             <li key={link.to}>
               <NavBarLink to={link.to} tabIndex={1}>
