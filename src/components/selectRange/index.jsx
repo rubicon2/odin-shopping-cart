@@ -1,3 +1,11 @@
+import styled from 'styled-components';
+
+const Select = styled.select`
+  background-color: white;
+  border: 1px solid var(--color--light);
+  border-radius: 5px;
+`;
+
 export default function SelectRange({
   min,
   max,
@@ -14,7 +22,7 @@ export default function SelectRange({
   }
 
   return (
-    <select
+    <Select
       id={id}
       aria-label={ariaLabel}
       className={className}
@@ -27,6 +35,6 @@ export default function SelectRange({
           {possibleValue}
         </option>
       ))}
-    </select>
+    </Select>
   );
 }
