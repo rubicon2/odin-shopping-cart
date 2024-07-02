@@ -5,6 +5,6 @@ const StyledHeading = styled.h2`
   font-weight: 300;
 `;
 
-export default function PageHeading({ children }) {
-  return <StyledHeading>{children}</StyledHeading>;
+export default function PageHeading({ className, children }) {
+  return <StyledHeading className={className}>{children}</StyledHeading>;
 }
