@@ -28,11 +28,14 @@ const HeroOverlay = styled.div`
 
 const Hero = styled(PageHeading)`
   font-weight: 700;
+  line-height: 2.5rem;
+  margin-bottom: 1rem;
 `;
 
 const CallToAction = styled.p`
   font-size: 1.5rem;
   font-weight: 400;
+  line-height: 1.4em;
   max-width: 20em;
 `;
 
