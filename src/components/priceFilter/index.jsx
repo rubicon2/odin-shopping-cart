@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 const Input = styled.input`
   width: 50%;
+  text-align: right;
 `;
 
 export default function PriceFilter({ minPrice, maxPrice, onChange }) {
