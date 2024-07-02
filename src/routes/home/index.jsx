@@ -22,7 +22,7 @@ const HeroOverlay = styled.div`
   color: white;
   position: absolute;
 
-  bottom: 25%;
+  top: 35%;
   left: 0;
 `;
 
