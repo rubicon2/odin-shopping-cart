@@ -30,6 +30,8 @@ const ProductInfo = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  /* If ProductCard components are in a grid and there is more than one column, */
+  /* this will ensure the product info is vertically aligned between columns.   */
   justify-content: space-between;
 
   @media (min-width: 970px) {
