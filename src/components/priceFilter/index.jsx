@@ -2,6 +2,11 @@ import FilterContainer from '../filterContainer';
 import FilterTitle from '../filterTitle';
 import FilterLabel from '../filterLabel';
 import { useState } from 'react';
+import styled from 'styled-components';
+
+const Input = styled.input`
+  width: 50%;
+`;
 
 export default function PriceFilter({ minPrice, maxPrice, onChange }) {
   const [selectedMin, setSelectedMin] = useState(minPrice);
@@ -24,7 +29,7 @@ export default function PriceFilter({ minPrice, maxPrice, onChange }) {
       <FilterTitle>Price</FilterTitle>
       <FilterLabel>
         Min:
-        <input
+        <Input
           aria-label="Filter by minimum price"
           type="number"
           inputMode="decimal"
@@ -36,7 +41,7 @@ export default function PriceFilter({ minPrice, maxPrice, onChange }) {
       </FilterLabel>
       <FilterLabel>
         Max:
-        <input
+        <Input
           aria-label="Filter by maximum price"
           type="number"
           inputMode="decimal"
