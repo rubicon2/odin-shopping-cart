@@ -64,11 +64,14 @@ export default function NavBasket() {
   const isActive = location.pathname === '/basket';
 
   return (
-    <BasketLink to="/basket">
+    <BasketLink
+      to="/basket"
+      aria-label={`Basket: ${basketItemCount} items in basket`}
+    >
       <ImgContainer>
         <img
           src={isActive ? BasketIconRed : BasketIcon}
-          alt={`${basketItemCount} items in basket`}
+          alt=""
           title={`${basketItemCount} items in basket`}
         />
         <ItemCount count={basketItemCount} className={isActive ? 'active' : ''}>

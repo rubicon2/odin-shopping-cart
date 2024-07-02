@@ -3,11 +3,12 @@ import CloseIcon from '/close-white.svg';
 import PriceFilter from '../../priceFilter';
 import CategoryFilter from '../../categoryFilter';
 import RatingFilter from '../../ratingFilter';
-import styled from 'styled-components';
 import ShopSectionContainer from '../../shopSectionContainer';
-import { useState } from 'react';
 
-export const MobileProductFilterContainer = styled.div`
+import { useState } from 'react';
+import styled from 'styled-components';
+
+export const MobileProductFilterContainer = styled.aside`
   position: sticky;
   bottom: 0;
 
@@ -25,8 +26,10 @@ const ShowFilterButton = styled.button`
   color: white;
   border: none;
 
-  /* So a larger area can be pressed to activate the button */
   width: 100%;
+  /* Stop height changing when content size slightly changes */
+  height: 4rem;
+  /* So a larger area can be pressed to activate the button */
   padding: 1.25rem 0;
   font-weight: 700;
   font-size: 1.3rem;
@@ -55,30 +58,38 @@ const FilterOptionsContainer = styled(ShopSectionContainer)`
 
 export default function MobileProductFilter({
   className,
+  query,
   minPrice,
   maxPrice,
-  categories,
-  initialRating,
   maxRating,
   onQueryChange,
 }) {
   const [open, setOpen] = useState(false);
+  const { selectedMin, selectedMax, selectedRating, categoryStatus } = query;
 
   return (
     // Using "as" breaks the inherited styles, but "forwardedAs" doesn't (???)
     // I think "as" works for overriding a styled component (i.e. const MyStyledThing = styled.div``),
-    // but "forwardedAs" is needed for a react function component (i.e. function MyComponent()).
-    <MobileProductFilterContainer className={className} forwardedAs="aside">
+    // but "forwardedAs" is needed for a react function component, whose root node is also a styled component (i.e. function MyComponent()).
+    <MobileProductFilterContainer
+      className={className}
+      aria-label="Product filters"
+    >
       {open && (
         <FilterOptionsContainer>
           <PriceFilter
+            selectedMin={selectedMin}
+            selectedMax={selectedMax}
             minPrice={minPrice}
             maxPrice={maxPrice}
             onChange={onQueryChange}
           />
-          <CategoryFilter categories={categories} onChange={onQueryChange} />
+          <CategoryFilter
+            categories={categoryStatus}
+            onChange={onQueryChange}
+          />
           <RatingFilter
-            initialRating={initialRating}
+            selectedRating={selectedRating}
             maxRating={maxRating}
             onChange={onQueryChange}
           />

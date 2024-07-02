@@ -1,4 +1,5 @@
 import Button from '../button';
+import SelectRange from '../selectRange';
 import { removeFromBasket, setQuantity } from '../../apis/user/user';
 import styled from 'styled-components';
 
@@ -60,7 +61,7 @@ export default function BasketItem({ product, qty }) {
     <Container>
       <ProductImg src={product.image} />
       <ProductInfo>
-        <h2>{product.title}</h2>
+        <h3>{product.title}</h3>
         <div>Price: £{product.price.toFixed(2)}</div>
         <Button value={product.id} onClick={() => handleRemove(product)}>
           Remove
@@ -69,10 +70,11 @@ export default function BasketItem({ product, qty }) {
       <ProductSummary>
         <SummaryRow>
           <label htmlFor={`${product.id}-qty`}>Qty:</label>
-          <input
+          <SelectRange
             id={`${product.id}-qty`}
-            type="number"
-            min="1"
+            ariaLabel="Select quantity"
+            min={1}
+            max={9}
             value={qty}
             onChange={(event) =>
               handleQtyChange(product, parseInt(event.currentTarget.value))

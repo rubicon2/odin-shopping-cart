@@ -2,6 +2,7 @@ import ShopSectionContainer from '../../shopSectionContainer';
 import PriceFilter from '../../priceFilter';
 import CategoryFilter from '../../categoryFilter';
 import RatingFilter from '../../ratingFilter';
+
 import styled from 'styled-components';
 
 export const DesktopProductFilterContainer = styled(ShopSectionContainer)`
@@ -13,26 +14,33 @@ export const DesktopProductFilterContainer = styled(ShopSectionContainer)`
 
 export default function DesktopProductFilter({
   className,
+  query,
   minPrice,
   maxPrice,
-  categories,
-  initialRating,
   maxRating,
   onQueryChange,
 }) {
+  const { selectedMin, selectedMax, selectedRating, categoryStatus } = query;
+
   return (
     // Using "as" breaks the inherited styles, but "forwardedAs" doesn't (???)
     // I think "as" works for overriding a styled component (i.e. const MyStyledThing = styled.div``),
     // but "forwardedAs" is needed for a react function component (i.e. function MyComponent()).
-    <DesktopProductFilterContainer className={className} forwardedAs="aside">
+    <DesktopProductFilterContainer
+      className={className}
+      forwardedAs="aside"
+      aria-label="Product filters"
+    >
       <PriceFilter
+        selectedMin={selectedMin}
+        selectedMax={selectedMax}
         minPrice={minPrice}
         maxPrice={maxPrice}
         onChange={onQueryChange}
       />
-      <CategoryFilter categories={categories} onChange={onQueryChange} />
+      <CategoryFilter categories={categoryStatus} onChange={onQueryChange} />
       <RatingFilter
-        initialRating={initialRating}
+        selectedRating={selectedRating}
         maxRating={maxRating}
         onChange={onQueryChange}
       />
