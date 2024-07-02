@@ -26,8 +26,10 @@ const ShowFilterButton = styled.button`
   color: white;
   border: none;
 
-  /* So a larger area can be pressed to activate the button */
   width: 100%;
+  /* Stop height changing when content size slightly changes */
+  height: 4rem;
+  /* So a larger area can be pressed to activate the button */
   padding: 1.25rem 0;
   font-weight: 700;
   font-size: 1.3rem;
