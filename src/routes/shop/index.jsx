@@ -108,10 +108,9 @@ export default function Shop() {
         {productList && (
           <ShopGrid>
             <DesktopProductFilter
+              query={query}
               minPrice={minPrice}
               maxPrice={maxPrice}
-              categories={categories}
-              initialRating={4}
               maxRating={5}
               onQueryChange={handleQueryChange}
             />
@@ -120,10 +119,9 @@ export default function Shop() {
         )}
       </Container>
       <MobileProductFilter
+        query={query}
         minPrice={minPrice}
         maxPrice={maxPrice}
-        categories={categories}
-        initialRating={4}
         maxRating={5}
         onQueryChange={handleQueryChange}
       />

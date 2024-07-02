@@ -2,7 +2,6 @@ import FilterContainer from '../filterContainer';
 import FilterTitle from '../filterTitle';
 import RatingStar from '../ratingStar';
 import styled from 'styled-components';
-import { useState } from 'react';
 
 const RatingContainer = styled.div`
   display: flex;
@@ -25,19 +24,16 @@ const RatingButton = styled.button`
 
 export default function RatingFilter({
   className,
-  initialRating,
+  selectedRating,
   maxRating,
   onChange,
 }) {
-  const [selectedMinRating, setSelectedMinRating] = useState(initialRating);
-
   const ratings = [];
   for (let i = 1; i <= maxRating; i++) ratings.push(i);
 
   const handleChange = (event) => {
     const { value } = event.currentTarget;
     onChange({ selectedRating: value });
-    setSelectedMinRating(value);
   };
 
   return (
@@ -55,7 +51,7 @@ export default function RatingFilter({
                 : `Filter products by rating: ${rating} stars only`
             }
           >
-            <RatingStar isChecked={selectedMinRating >= rating} />
+            <RatingStar isChecked={selectedRating >= rating} />
           </RatingButton>
         ))}
         & Up

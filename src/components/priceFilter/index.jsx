@@ -1,7 +1,7 @@
 import FilterContainer from '../filterContainer';
 import FilterTitle from '../filterTitle';
 import FilterLabel from '../filterLabel';
-import { useState } from 'react';
+
 import styled from 'styled-components';
 
 const Input = styled.input`
@@ -9,19 +9,20 @@ const Input = styled.input`
   text-align: right;
 `;
 
-export default function PriceFilter({ minPrice, maxPrice, onChange }) {
-  const [selectedMin, setSelectedMin] = useState(minPrice);
-  const [selectedMax, setSelectedMax] = useState(maxPrice);
-
+export default function PriceFilter({
+  selectedMin,
+  selectedMax,
+  minPrice,
+  maxPrice,
+  onChange,
+}) {
   const handleMinChange = (event) => {
     const value = Number.parseFloat(event.currentTarget.value);
-    setSelectedMin(value);
     onChange({ selectedMin: value });
   };
 
   const handleMaxChange = (event) => {
     const value = Number.parseFloat(event.currentTarget.value);
-    setSelectedMax(value);
     onChange({ selectedMax: value });
   };
 
