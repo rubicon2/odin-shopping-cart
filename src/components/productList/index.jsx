@@ -4,6 +4,8 @@ import styled from 'styled-components';
 const Container = styled.main`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 90vw), 1fr));
+  /* Ensure rows do not stretch to fill parent container */
+  grid-auto-rows: min-content;
   gap: 1.5rem;
   min-height: 100vh;
 `;
