@@ -12,9 +12,11 @@ export const MobileProductFilterContainer = styled.aside`
   position: sticky;
   bottom: 0;
 
-  max-height: 80vh;
   padding: 0;
 
+  /* Stop the opened filters taking up the entire viewport */
+  max-height: 80vh;
+  /* If there is too much content, scroll */
   overflow-y: scroll;
 
   box-shadow: -5px -5px 5px 5px var(--color--shadow);
