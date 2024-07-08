@@ -3,16 +3,24 @@ import { screen, render } from '@testing-library/react';
 
 describe('ShopSectionContainer', () => {
   it('Renders a div by default', () => {
-    render(<ShopSectionContainer>Testing</ShopSectionContainer>);
-    expect(screen.getByText('Testing').nodeName).toBe('DIV');
+    render(<ShopSectionContainer />);
+    expect(screen.getByTestId('shop-section-container').nodeName).toBe('DIV');
   });
 
-  it('Renders the element specified by the as prop', () => {
-    render(<ShopSectionContainer as="main">Main</ShopSectionContainer>);
-    expect(screen.getByText('Main').nodeName).toBe('MAIN');
+  describe('Renders the element specified by the as prop', () => {
+    it('Renders as main correctly', () => {
+      render(<ShopSectionContainer as="main" />);
+      expect(screen.getByTestId('shop-section-container').nodeName).toBe(
+        'MAIN',
+      );
+    });
 
-    render(<ShopSectionContainer as="aside">Aside</ShopSectionContainer>);
-    expect(screen.getByText('Aside').nodeName).toBe('ASIDE');
+    it('Renders as aside correctly', () => {
+      render(<ShopSectionContainer as="aside" />);
+      expect(screen.getByTestId('shop-section-container').nodeName).toBe(
+        'ASIDE',
+      );
+    });
   });
 
   it('Contains the children prop as child elements', () => {
@@ -22,18 +30,16 @@ describe('ShopSectionContainer', () => {
         <p>Paragraph</p>
       </ShopSectionContainer>,
     );
-    const children = screen.getByRole('main').childNodes;
+    const children = screen.getByTestId('shop-section-container').childNodes;
     expect(children.length).toBe(2);
     expect(children[0].textContent).toBe('Heading');
     expect(children[1].textContent).toBe('Paragraph');
   });
 
   it('Applies the class prop if provided', () => {
-    render(
-      <ShopSectionContainer className={'someClass'}>
-        Container
-      </ShopSectionContainer>,
+    render(<ShopSectionContainer className={'someClass'} />);
+    expect(screen.getByTestId('shop-section-container').classList).toContain(
+      'someClass',
     );
-    expect(screen.getByText('Container').classList).toContain('someClass');
   });
 });

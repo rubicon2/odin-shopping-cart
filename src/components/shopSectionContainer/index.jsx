@@ -9,7 +9,11 @@ const Container = styled.div`
 
 export default function ShopSectionContainer({ className, children, as }) {
   return (
-    <Container className={className} as={as}>
+    <Container
+      data-testid="shop-section-container"
+      className={className}
+      as={as}
+    >
       {children}
     </Container>
   );
