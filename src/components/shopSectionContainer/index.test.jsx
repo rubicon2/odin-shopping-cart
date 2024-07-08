@@ -23,7 +23,7 @@ describe('ShopSectionContainer', () => {
     });
   });
 
-  it('Contains the children prop as child elements', () => {
+  it('Renders the children prop as child elements', () => {
     render(
       <ShopSectionContainer as="main">
         <h1>Heading</h1>
