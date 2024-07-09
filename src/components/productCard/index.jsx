@@ -82,7 +82,7 @@ export default function ProductCard({ className, maxRating = 5, product }) {
           />
         </div>
         <BuySection>
-          <div>{priceString}</div>
+          <div aria-label="Price">{priceString}</div>
           <Row>
             <label htmlFor={`${product.id}-qty-input`} aria-hidden={true}>
               Qty:
@@ -92,15 +92,18 @@ export default function ProductCard({ className, maxRating = 5, product }) {
               min={1}
               max={9}
               value={qty}
-              ariaLabel="Select quantity"
+              aria-label="Select quantity"
               onChange={(event) => setQty(parseInt(event.currentTarget.value))}
             />
           </Row>
-          <BuyButton onClick={() => handleBuy(product, qty)}>
+          <BuyButton
+            data-testid="buy-button"
+            onClick={() => handleBuy(product, qty)}
+          >
             <img
               src={BuyIcon}
               title={`Buy ${qty} of ${product.title} for a total of ${totalPriceString}`}
-              alt=""
+              alt="Buy"
             />
           </BuyButton>
         </BuySection>
