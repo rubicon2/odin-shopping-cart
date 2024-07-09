@@ -37,7 +37,6 @@ describe('Product List', () => {
 
   it('Renders a product card for each element in the products prop array', () => {
     render(<ProductList products={products} />);
-    console.log('MEGA: ', ProductCard.mock.calls);
     expect(ProductCard).toHaveBeenCalledTimes(4);
   });
 });
