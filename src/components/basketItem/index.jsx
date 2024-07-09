@@ -59,7 +59,7 @@ export default function BasketItem({ product, qty }) {
 
   return (
     <Container>
-      <ProductImg src={product.image} />
+      <ProductImg src={product.image} alt={product.title} />
       <ProductInfo>
         <h3>{product.title}</h3>
         <div>Price: £{product.price.toFixed(2)}</div>
