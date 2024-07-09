@@ -27,19 +27,22 @@ const StyledButton = styled.button`
   }
 `;
 
-export default function Button({
-  className,
-  children,
-  value,
-  disabled = false,
-  onClick,
-}) {
+export default function Button(props) {
+  const {
+    className,
+    children,
+    value,
+    disabled = false,
+    onClick,
+    ...otherProps
+  } = props;
   return (
     <StyledButton
       className={className}
       disabled={disabled}
       value={value}
       onClick={onClick}
+      {...otherProps}
     >
       {children}
     </StyledButton>

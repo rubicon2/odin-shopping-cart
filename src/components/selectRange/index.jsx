@@ -6,30 +6,15 @@ const Select = styled.select`
   border-radius: 5px;
 `;
 
-export default function SelectRange({
-  min,
-  max,
-  value,
-  onChange,
-  onBlur,
-  id,
-  className,
-  ariaLabel,
-}) {
+export default function SelectRange(props) {
+  const { min, max, value, onChange, onBlur, ...otherProps } = props;
   const possibleValues = [];
   for (let current = min; current <= max; current++) {
     possibleValues.push(current);
   }
 
   return (
-    <Select
-      id={id}
-      aria-label={ariaLabel}
-      className={className}
-      value={value}
-      onChange={onChange}
-      onBlur={onBlur}
-    >
+    <Select value={value} onChange={onChange} onBlur={onBlur} {...otherProps}>
       {possibleValues.map((possibleValue) => (
         <option key={possibleValue} value={possibleValue}>
           {possibleValue}
