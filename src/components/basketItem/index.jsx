@@ -85,8 +85,10 @@ export default function BasketItem({ product, qty }) {
           />
         </SummaryRow>
         <SummaryRow>
-          <span>Total:</span>
-          <TotalValue>£{(product.price * qty).toFixed(2)}</TotalValue>
+          <span id={`${product.id}-total`}>Total:</span>
+          <TotalValue aria-labelledby={`${product.id}-total`}>
+            £{(product.price * qty).toFixed(2)}
+          </TotalValue>
         </SummaryRow>
       </ProductSummary>
     </Container>
