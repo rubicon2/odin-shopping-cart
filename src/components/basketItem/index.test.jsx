@@ -31,9 +31,26 @@ describe('Basket item', () => {
     expect(screen.getByText(/price/i).textContent).toContain(product.price);
   });
 
-  it('Renders qty select input', () => {
-    render(<BasketItem product={product} />);
-    expect(screen.getByLabelText(/qty/i)).toBeDefined();
+  describe('Renders qty input', () => {
+    it('Renders correctly', () => {
+      render(<BasketItem product={product} />);
+      expect(screen.getByLabelText(/qty/i)).toBeDefined();
+    });
+
+    it('Has a type of select', () => {
+      render(<BasketItem product={product} />);
+      expect(screen.getByLabelText(/qty/i).nodeName).toBe('SELECT');
+    });
+
+    it('Has a minimum option of 1 and a maximum of 9', () => {
+      render(<BasketItem product={product} />);
+      const options = screen
+        .getAllByRole('option')
+        .map((option) => parseInt(option.value))
+        .sort((a, b) => a - b);
+      expect(options[0]).toBe(1);
+      expect(options[options.length - 1]).toBe(9);
+    });
   });
 
   it('Renders total cost', () => {
