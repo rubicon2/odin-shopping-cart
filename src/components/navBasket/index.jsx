@@ -74,7 +74,11 @@ export default function NavBasket() {
           alt=""
           title={`${basketItemCount} items in basket`}
         />
-        <ItemCount count={basketItemCount} className={isActive ? 'active' : ''}>
+        <ItemCount
+          data-testid="basket-item-count"
+          count={basketItemCount}
+          className={isActive ? 'active' : ''}
+        >
           {basketItemCount}
         </ItemCount>
       </ImgContainer>
