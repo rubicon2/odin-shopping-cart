@@ -3,7 +3,7 @@ import NavBar from '../navBar';
 import LogoDark from '/mega-shop-logo-dark.svg';
 import styled from 'styled-components';
 
-const Background = styled.header`
+const Background = styled.div`
   background-color: white;
   position: relative;
   z-index: 2;
@@ -55,12 +55,12 @@ export default function Header() {
     <>
       <Background>
         <Content>
-          <Logo src={LogoDark} alt="" />
+          <Logo src={LogoDark} alt="Mega Shop" />
         </Content>
       </Background>
       <StickyBackground>
         <Content>
-          <StickyLogo src={LogoDark} alt="" />
+          <StickyLogo src={LogoDark} alt="Mega Shop" />
           <NavBar />
         </Content>
       </StickyBackground>
