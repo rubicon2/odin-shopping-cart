@@ -18,7 +18,9 @@ export default function DesktopNavBar({ links }) {
       <NavList>
         {links.map((link) => (
           <li key={link.to}>
-            <NavBarLink to={link.to}>{link.innerText}</NavBarLink>
+            <NavBarLink data-testid="generated-link" to={link.to}>
+              {link.innerText}
+            </NavBarLink>
           </li>
         ))}
         <NavBasket />
