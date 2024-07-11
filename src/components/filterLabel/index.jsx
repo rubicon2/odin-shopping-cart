@@ -6,6 +6,10 @@ const Label = styled.label`
   align-items: center;
 `;
 
-export default function FilterLabel({ children, className = '' }) {
-  return <Label className={className}>{children}</Label>;
+export default function FilterLabel({ children, className }) {
+  return (
+    <Label data-testid="filter-label" className={className}>
+      {children}
+    </Label>
+  );
 }

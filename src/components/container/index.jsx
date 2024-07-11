@@ -8,7 +8,7 @@ const ContainerStyled = styled.div`
 
 export default function Container({ children, as = 'div', className = '' }) {
   return (
-    <ContainerStyled as={as} className={className}>
+    <ContainerStyled data-testid="container" as={as} className={className}>
       {children}
     </ContainerStyled>
   );

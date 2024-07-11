@@ -59,7 +59,7 @@ export default function BasketItem({ product, qty }) {
 
   return (
     <Container>
-      <ProductImg src={product.image} />
+      <ProductImg src={product.image} alt={product.title} />
       <ProductInfo>
         <h3>{product.title}</h3>
         <div>Price: £{product.price.toFixed(2)}</div>
@@ -72,7 +72,7 @@ export default function BasketItem({ product, qty }) {
           <label htmlFor={`${product.id}-qty`}>Qty:</label>
           <SelectRange
             id={`${product.id}-qty`}
-            ariaLabel="Select quantity"
+            aria-label="Select quantity"
             min={1}
             max={9}
             value={qty}
@@ -85,8 +85,10 @@ export default function BasketItem({ product, qty }) {
           />
         </SummaryRow>
         <SummaryRow>
-          <span>Total:</span>
-          <TotalValue>£{(product.price * qty).toFixed(2)}</TotalValue>
+          <span id={`${product.id}-total`}>Total:</span>
+          <TotalValue aria-labelledby={`${product.id}-total`}>
+            £{(product.price * qty).toFixed(2)}
+          </TotalValue>
         </SummaryRow>
       </ProductSummary>
     </Container>

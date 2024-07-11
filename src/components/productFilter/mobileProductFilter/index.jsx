@@ -74,6 +74,7 @@ export default function MobileProductFilter({
     // I think "as" works for overriding a styled component (i.e. const MyStyledThing = styled.div``),
     // but "forwardedAs" is needed for a react function component, whose root node is also a styled component (i.e. function MyComponent()).
     <MobileProductFilterContainer
+      data-testid="mobile-product-filter"
       className={className}
       aria-label="Product filters"
     >

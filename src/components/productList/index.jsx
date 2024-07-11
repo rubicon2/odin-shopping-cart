@@ -13,9 +13,9 @@ const Container = styled.main`
   min-height: 100vh;
 `;
 
-export default function ProductList({ products }) {
+export default function ProductList({ products = [] }) {
   return (
-    <Container aria-label="Product list">
+    <Container data-testid="product-list" aria-label="Product list">
       {products.length < 1 && 'No products found!'}
       {products.map((product) => (
         <ProductCard key={product.id} maxRating={5} product={product} />

@@ -7,9 +7,10 @@ const Container = styled.div`
   padding: 1.5rem;
 `;
 
-export default function ShopSectionContainer({ className, children, as }) {
+export default function ShopSectionContainer(props) {
+  const { children, ...otherProps } = props;
   return (
-    <Container className={className} as={as}>
+    <Container data-testid="shop-section-container" {...otherProps}>
       {children}
     </Container>
   );

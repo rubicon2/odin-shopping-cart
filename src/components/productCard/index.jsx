@@ -2,20 +2,16 @@ import BuyIcon from '/buy.svg';
 
 import ShopSectionContainer from '../shopSectionContainer';
 import Button from '../button';
-import RatingStar from '../ratingStar';
 import SelectRange from '../selectRange';
 import { addToBasket } from '../../apis/user/user';
 
 import styled from 'styled-components';
 import { useState } from 'react';
+import ProductRating from '../productRating';
 
 const ProductContainer = styled(ShopSectionContainer)`
   display: flex;
   flex-direction: column;
-`;
-
-const RatingContainer = styled.div`
-  display: flex;
 `;
 
 const ProductImg = styled.img`
@@ -69,12 +65,10 @@ const handleBuy = async (product, qty) => {
   await addToBasket(product, qty);
 };
 
-export default function ProductCard({ className, maxRating, product }) {
+export default function ProductCard({ className, maxRating = 5, product }) {
   const [qty, setQty] = useState(1);
   const priceString = '£' + product.price.toFixed(2);
   const totalPriceString = '£' + (product.price * qty).toFixed(2);
-  const ratings = [];
-  for (let i = 1; i <= maxRating; i++) ratings.push(i);
 
   return (
     <ProductContainer className={className}>
@@ -82,19 +76,13 @@ export default function ProductCard({ className, maxRating, product }) {
       <ProductInfo>
         <div>
           <h3 id={`${product.id}-title`}>{product.title}</h3>
-          <RatingContainer
-            aria-label={`Rated ${product.rating.rate} out of ${maxRating} stars`}
-          >
-            {ratings.map((rating) => (
-              <RatingStar
-                key={rating}
-                isChecked={rating <= product.rating.rate}
-              />
-            ))}
-          </RatingContainer>
+          <ProductRating
+            userRating={product.rating.rate}
+            maxRating={maxRating}
+          />
         </div>
         <BuySection>
-          <div>{priceString}</div>
+          <div aria-label="Price">{priceString}</div>
           <Row>
             <label htmlFor={`${product.id}-qty-input`} aria-hidden={true}>
               Qty:
@@ -104,15 +92,18 @@ export default function ProductCard({ className, maxRating, product }) {
               min={1}
               max={9}
               value={qty}
-              ariaLabel="Select quantity"
+              aria-label="Select quantity"
               onChange={(event) => setQty(parseInt(event.currentTarget.value))}
             />
           </Row>
-          <BuyButton onClick={() => handleBuy(product, qty)}>
+          <BuyButton
+            data-testid="buy-button"
+            onClick={() => handleBuy(product, qty)}
+          >
             <img
               src={BuyIcon}
               title={`Buy ${qty} of ${product.title} for a total of ${totalPriceString}`}
-              alt=""
+              alt="Buy"
             />
           </BuyButton>
         </BuySection>

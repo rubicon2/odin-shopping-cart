@@ -18,5 +18,9 @@ const Container = styled.div`
 `;
 
 export default function FilterContainer({ className, children }) {
-  return <Container className={className}>{children}</Container>;
+  return (
+    <Container data-testid="filter-container" className={className}>
+      {children}
+    </Container>
+  );
 }
