@@ -17,13 +17,23 @@ export default function PriceFilter({
   onChange,
 }) {
   const handleMinChange = (event) => {
-    const value = Number.parseFloat(event.currentTarget.value);
+    let value = Number.parseFloat(event.currentTarget.value);
     onChange({ selectedMin: value });
   };
 
   const handleMaxChange = (event) => {
-    const value = Number.parseFloat(event.currentTarget.value);
+    let value = Number.parseFloat(event.currentTarget.value);
     onChange({ selectedMax: value });
+  };
+
+  const limitMinValue = (event) => {
+    let value = Number.parseFloat(event.currentTarget.value);
+    if (value > selectedMax) onChange({ selectedMin: selectedMax });
+  };
+
+  const limitMaxValue = (event) => {
+    let value = Number.parseFloat(event.currentTarget.value);
+    if (value < selectedMin) onChange({ selectedMax: selectedMin });
   };
 
   return (
@@ -39,6 +49,7 @@ export default function PriceFilter({
           min={minPrice}
           max={selectedMax}
           onChange={handleMinChange}
+          onBlur={limitMinValue}
         />
       </FilterLabel>
       <FilterLabel>
@@ -51,6 +62,7 @@ export default function PriceFilter({
           min={selectedMin}
           max={maxPrice}
           onChange={handleMaxChange}
+          onBlur={limitMaxValue}
         />
       </FilterLabel>
     </FilterContainer>
