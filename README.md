@@ -2,6 +2,8 @@
 
 https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart
 
+https://odin-mega-shop.netlify.app/
+
 ## Extra, Extra
 
 Looking back at the project brief, I actually developed a number of extra features that were not required, which may go some way to explain why I spent so long on it. At least, that's my excuse.
