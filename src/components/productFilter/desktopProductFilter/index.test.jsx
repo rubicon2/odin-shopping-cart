@@ -1,6 +1,5 @@
 import DesktopProductFilter from '.';
 import { render, screen } from '@testing-library/react';
-import { vi } from 'vitest';
 
 const query = {
   selectedMin: 0,
